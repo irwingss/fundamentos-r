@@ -32,9 +32,11 @@ Pon en práctica la creación de algoritmos empleando pseudocódigo con los sigu
 
 ::: columns
 ::: column
-En la sección *R como calculadora (módulo ¡Comencemos!)*, se mostró que al utilizar el símbolo `%%` en una división, el resultado impreso en consola era el residuo de la misma.
+En la sección *R como calculadora* se mostró que al utilizar `Numero1 %% Numero2`, el resultado impreso en consola es el residuo de la división de `Numero1` entre `Numero2`. 
 
-Aplica lo visto en la sección de *Pseudocódigo* para crear uno que te permita responder la pregunta ¿el número N es par?:
+Toma como pista lo siguiente: siempre que dividas un número par, el residuo de la división es 0.
+
+Aplica lo aprendido para crear un pseudocódigo que te permita responder la pregunta ¿el número "N" es par?:
 :::
 
 ::: column
