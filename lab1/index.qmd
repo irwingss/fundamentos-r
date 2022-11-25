@@ -7,7 +7,7 @@ format:
     dpi: 600
     smooth-scroll: true
     search: false
-    code-summary: "Mostrar el código"
+    code-summary: "ooo"
     code-fold: true
     code-overflow: wrap
     code-block-bg: true
@@ -190,4 +190,3 @@ Como habrás notado en las respuestas ofrecidas en este laboratorio, se suele tr
 $$
 \text{Algoritmos} + \text{Estructuras de datos} = \text{Programas}
 $$
-
