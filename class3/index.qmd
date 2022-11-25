@@ -1,0 +1,682 @@
+---
+title: "Fundamentos de <br>programación con R"
+subtitle: "Track: Estadística y programación con R<br>2022-3"
+author: "Irwing S. Saldaña"
+format: 
+  revealjs:
+    revealjs-plugins:
+     - fullscreen
+    touch: true
+    auto-stretch: false 
+    incremental: false
+    smaller: true
+    scrollable: true
+    theme: mytheme.scss
+    transition: none
+    background-transition: none
+    logo: figs/logo.png
+    chalkboard:
+      chalk-effect: 0.4
+      boardmarker-width: 3
+      chalk-width: 4.4
+      buttons: true
+    footer: "Fundamentos de R"
+execute:
+  cache: true
+editor: visual
+title-slide-attributes:
+    data-background-image: "figs/FondoPrincipal.jpg"
+    data-background-size: cover
+    data-background-opacity: "number"
+editor_options: 
+  chunk_output_type: console
+---
+
+# Programación funcional y graficación estadística
+
+<h2 style="color:#696969;">
+
+Clase 3
+
+</h2>
+
+# Sección 5: Esenciales de programación funcional {background-image="figs/00_Background_Section.png"}
+
+## 5.1. Creación de funciones {transition="zoom-in"}
+
+R es un **lenguaje orientado a objetos**: creamos variables, las modificamos y operamos con ellas. Pero además, R tiene muy buen soporte de sintaxis para **crear funciones**. Se podría decir que es un lenguaje polifacético y adecuado para investigación en ciencias.
+
+-   Para crear funciones se usa la función `function()` con la siguiente sintaxis:
+
+```{r, fig.align='center',out.width="80%"}
+knitr::include_graphics("figs/03_Estructura funciones.png", dpi=600)
+```
+
+## 5.1. Creación de funciones
+
+Los argumentos le brindan la información que al función procesará. Aquí debes saber que las `{}` las usaremos solo en funciones con **más de una línea de código**. Creemos una función para elevar un número a una potencia dada:
+
+```{r, echo=TRUE}
+# Ejemplo 01: una sola línea de código
+elevP <- function(numero, potencia) numero^potencia
+
+# Ejemplo 02: en más de una línea de código {}
+elevP <- function(numero, potencia) {
+  numero^potencia
+}
+
+# Uso
+elevP(10, 2)
+```
+
+## 5.1. Creación de funciones
+
+Además, puedes establecer **argumentos con valores por defecto**.
+
+```{r, echo=TRUE}
+# Coloquemos la potencia por defecto igual a 2
+elevP <- function(numero, potencia = 2) numero^potencia
+```
+
+```{r, echo=TRUE}
+# Sin argumento potencia, tomará el valor por defecto
+elevP(10)
+
+# Especificando una potencia
+elevP(10, 2)
+
+# Usando los nombres de los argumentos
+elevP(numero = 10, potencia = 4)
+```
+
+## 5.1. Creación de funciones
+
+Es importante **comentar una función**, principalmente las que cuentan con muchas líneas de código. Esto le dará legibilidad a tu código.
+
+```{r, echo=TRUE}
+# Deja un comentario dentro de la función
+elevP <- function(numero, potencia = 2) {
+  # Esta es una función importante
+  numero^potencia
+}
+```
+
+```{r, echo=TRUE}
+elevP(14, 9)
+```
+
+## 5.1. Creación de funciones
+
+Puedes incluso **crear variables temporales dentro de las funciones** para realizar operaciones más complejas. Pidamos que la función nos devuelva *el valor dividido entre pi*.
+
+```{r, echo=TRUE}
+# Creemos una variable temporal dentro de la función
+elevP <- function(numero, potencia = 2) {
+  # Esta es una función importante
+   resultado <- numero^potencia
+   resultado
+}
+```
+
+```{r, echo=TRUE}
+elevP(14, 9)
+```
+
+## 5.1. Creación de funciones
+
+Es una buena práctica usar `print()` para **imprimir un resultado**.
+
+```{r, echo=TRUE}
+# Imprime el resultado con print()
+elevP <- function(numero, potencia = 2) {
+  # Esta es una función importante
+   resultado_intermedio <- numero^potencia
+   print(resultado_intermedio/pi)
+}
+```
+
+```{r, echo=TRUE}
+elevP(14, 9)
+```
+
+## 5.1. Creación de funciones
+
+Finalmente, puedes **personalizar el resultado impreso** en consola con `cat()`.
+
+```{r, echo=TRUE}
+# Personaliza la salida de la función
+elevP <- function(numero, potencia = 2) {
+  # Esta es una función importante
+   resultado_intermedio <- numero^potencia
+   resultado_final <- resultado_intermedio/pi
+   cat("El número", numero, "elevado a la potencia", 
+       potencia, "y dividido entre pi es:", resultado_final, "\n")
+}
+```
+
+```{r, echo=TRUE}
+elevP(14, 9)
+```
+
+## 5.2. Fundamentos de control de flujo con if y else {transition="zoom-in"}
+
+::: columns
+::: {.column width="50%"}
+El control de flujo con `if` utiliza una condición. De cumplirse, es decir, resultado `TRUE`, se muestra el contenido de if, sino se cumple, no sucede nada.
+
+```{r, eval=FALSE, echo=TRUE}
+if (CONDICION LÓGICA) {
+  contenido de if
+}
+```
+
+::: {.fragment .fade-in}
+```{r, eval=FALSE, echo=TRUE}
+# Ejemplo
+if (is.numeric(DF$COL1)) {
+  print(DF$COL1)
+}
+```
+:::
+:::
+
+::: {.column width="50%"}
+```{r, echo=FALSE, fig.align='center', out.width="80%"}
+knitr::include_graphics("figs/03_If.png", dpi = 600)
+```
+:::
+:::
+
+## 5.2. Fundamentos de control de flujo con if y else
+
+::: columns
+::: {.column width="50%"}
+Para definir qué sucederá cuando la condición lógica en `if` sea falsa, usamos `else`. Entonces, cuando `if` sea falso, `else` mostrará su contenido.
+
+```{r, eval=FALSE, echo=TRUE}
+if (CONDICION LÓGICA) {
+  contenido de if
+} else {
+  contenido de else
+}
+```
+
+::: {.fragment .fade-in}
+```{r, eval=FALSE, echo=TRUE}
+# Ejemplo
+if (is.numeric(DF$COL1)) {
+  print(DF$COL1)
+} else {
+  print("No es numérica")
+}
+```
+:::
+:::
+
+::: {.column width="50%"}
+```{r, echo=FALSE, fig.align='center', out.width="80%"}
+knitr::include_graphics("figs/03_IfElse.png", dpi = 600)
+```
+:::
+:::
+
+## 5.2. Fundamentos de control de flujo con if y else {auto-animate="true"}
+
+Apliquemos lo aprendido. Crea una función que (1) calcule el área de un círculo y (2) te muestre el resultado siempre y cuando este valor, redondeado a número entero, sea par. (3) Si es impar, mostrar un texto cualquiera. **¡Hey! primero elabora el pseudocódigo y luego conviértelo en código.**
+
+```{r, eval=FALSE, echo=TRUE}
+# Crea la función
+areaCirculo <- function(...){
+  ...
+}
+```
+
+## 5.2. Fundamentos de control de flujo con if y else {auto-animate="true"}
+
+Apliquemos lo aprendido. Crea una función que (1) calcule el área de un círculo y (2) te muestre el resultado siempre y cuando este valor, redondeado a número entero, sea par. (3) Si es impar, mostrar un texto cualquiera. **¡Hey! primero elabora el pseudocódigo y luego conviértelo en código.**
+
+```{r, echo=TRUE}
+# Crea la función
+areaCirculo <- function(radio){
+  area <- pi*radio^2
+  area_r <- round(area)
+  if(area_r %% 2 == 0) {
+    return(area)
+  } else {
+    return("No es par, so sad")
+  }
+}
+```
+
+## 5.2. Fundamentos de control de flujo con if y else
+
+```{r, echo=TRUE}
+# Evaluar con 2 y 10
+areaCirculo(2)
+areaCirculo(10)
+```
+
+## 5.2. Fundamentos de control de flujo con if y else
+
+Estos dos operadores de control de flujo también sirve como **interruptores dentro de funciones** para que se ejecute una u otra cosa dependiendo si colocamos `TRUE` o `FALSE` en un argumento dado.
+
+```{r, echo=TRUE}
+# "modo.serio" para producir una respuesta formal e informal
+areaModo <- function(radio, modo.serio = TRUE){
+  area <- pi*radio^2
+  area_r <- round(area)
+  
+  if(area_r %% 2 == 0) {
+    return(area)
+
+  } else if(modo.serio == TRUE) {
+    return("El resultado generado no es par, lo sentimos")
+    
+  } else if(modo.serio == FALSE) {
+    return("Nahh! mala suerte, no es par")
+  }
+}
+```
+
+## 5.2. Fundamentos de control de flujo con if y else
+
+Estos dos operadores de control de flujo también sirve como **interruptores dentro de funciones** para que se ejecute una u otra cosa dependiendo si colocamos `TRUE` o `FALSE` en un argumento dado.
+
+```{r, echo=FALSE}
+areaModo <- function(radio, modo.serio = TRUE){
+  area <- pi*radio^2
+  area_r <- round(area)
+  
+  if(area_r %% 2 == 0) {
+    return(area)
+
+  } else if(modo.serio == TRUE) {
+    return("El resultado generado no es par, lo sentimos")
+    
+  } else if(modo.serio == FALSE) {
+    return("Nahh! mala suerte, no es par")
+  }
+}
+```
+
+```{r, echo=TRUE}
+# Modo serio activado (definido por defecto)
+areaModo(5)
+
+# Modo serio desactivado
+areaModo(5, modo.serio = FALSE)
+```
+
+## 5.3. Ciclo for (loop for) {transition="zoom-in"}
+
+::: columns
+::: {.column width="50%"}
+Además de controlar el flujo de las respuestas del código, es importante conocer cómo se realizan **automatizaciones de procesos con ciclos**. El ciclo `for` no es el único que existe, pero sí el primero que debes conocer.
+
+```{r, eval=FALSE, echo=TRUE}
+for (PLACEHOLDER in RANGO) {
+  CUERPO DEL LOOP
+}
+```
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+for (i in 1:5) {
+  print(i)
+}
+```
+:::
+:::
+
+::: {.column width="50%"}
+```{r, echo=FALSE, fig.align='center', out.width="72%"}
+knitr::include_graphics("figs/03_LoopFor.png", dpi = 600)
+```
+:::
+:::
+
+## 5.3. Ciclo for (loop for) {auto-animate="true"}
+
+**Reto:** ¿Cómo harías para evaluar los números enteros entre 1 y 30 con la función `areaCirculo()`? **¡Hey! primero elabora el pseudocódigo y luego conviértelo en código.**
+
+```{r, eval=FALSE, echo=TRUE}
+...
+
+```
+
+## 5.3. Ciclo for (loop for) {auto-animate="true"}
+
+**Reto:** ¿Cómo harías para evaluar los números enteros entre 1 y 30 con la función `areaCirculo()`? **¡Hey! primero elabora el pseudocódigo y luego conviértelo en código.**
+
+```{r, echo=FALSE}
+# Crea la función
+areaCirculo <- function(radio){
+  area <- pi*radio^2
+  area_r <- round(area)
+  if(area_r %% 2 == 0) {
+    return(area)
+  } else {
+    return("No es par, so sad")
+  }
+}
+```
+
+```{r, echo=TRUE}
+# Usando loop for
+for (i in 1:30) {
+    cat("r = ", i, "; área =", areaCirculo(i), "\n")
+}
+```
+
+## 5.3. Ciclo for (loop for) {auto-animate="true"}
+
+**Otro reto:** ¿cómo harías para que solo muestre los valores numéricos y se salte la impresión de "No es par, so sad"? **¡Hey! primero elabora el pseudocódigo y luego conviértelo en código.**
+
+```{r, eval=FALSE, echo=TRUE}
+# Usa lo aprendido
+for (i in 1:30) {
+  ...
+    cat("r = ", i, "; área =",areaCirculo(i),"\n")
+  ...
+}
+```
+
+## 5.3. Ciclo for (loop for) {auto-animate="true"}
+
+**Otro reto:** ¿cómo harías para que solo muestre los valores numéricos y se salte la impresión de "No es par, so sad"?. **¡Hey! primero elabora el pseudocódigo y luego conviértelo en código.**
+
+```{r, echo=TRUE}
+# Usa lo aprendido
+for (i in 1:30) {
+  if(is.numeric(areaCirculo(i))) {
+    cat("r = ", i, "; área =",areaCirculo(i),"\n")
+    } else {
+      return(i)
+      }
+}
+```
+
+# Sección 6: Fundamentos de graficación con ggplot2 {background-image="figs/00_Background_Section.png"}
+
+## 6.1. El famoso ggplot2 {transition="zoom-in"}
+
+::: columns
+::: {.column width="50%"}
+A la librería `ggplot2` se le reconoce como la mejor para elaborar gráficos estadísticos. El prefijo `gg` proviene de **gramática de gráficos**. Con una sintaxis simple e intuitiva podrás elaborar *gráficos estadísticos de nivel profesional*.
+:::
+
+::: {.column width="50%"}
+```{r, echo=FALSE, fig.align='center', out.width="100%"}
+knitr::include_graphics("figs/03_tidyverse universo.png", dpi=600)
+```
+:::
+:::
+
+## 6.1. El famoso ggplot2 {auto-animate="true"}
+
+Con `ggplot2` **sumamos capas** en el gráfico resultante. Una versión simplificada de su código sería:
+
+```{r, eval=FALSE, echo=TRUE}
+# Activación del "universo ordenado"
+library(tidyverse)
+
+# Sintáxis ggplot2
+ggplot(data = DF,  # base de datos
+       ...) 
+```
+
+## 6.1. El famoso ggplot2 {auto-animate="true"}
+
+Con `ggplot2` **sumamos capas** en el gráfico resultante. Una versión simplificada de su código sería:
+
+```{r, eval=FALSE, echo=TRUE}
+# Activación del "universo ordenado"
+library(tidyverse)
+
+# Sintáxis ggplot2
+ggplot(data = DF,  # base de datos
+       mapping = aes(x, y, ...)) + # estéticas
+  ...
+```
+
+## 6.1. El famoso ggplot2 {auto-animate="true"}
+
+Con `ggplot2` **sumamos capas** en el gráfico resultante. Una versión simplificada de su código sería:
+
+```{r, eval=FALSE, echo=TRUE}
+# Activación del "universo ordenado"
+library(tidyverse)
+
+# Sintáxis ggplot2
+ggplot(data = DF,  # base de datos
+       mapping = aes(x, y, ...)) + # estéticas
+  geom_...  + # geométricas a graficar
+  ...
+```
+
+## 6.1. El famoso ggplot2 {auto-animate="true"}
+
+Con `ggplot2` **sumamos capas** en el gráfico resultante. Una versión simplificada de su código sería:
+
+```{r, eval=FALSE, echo=TRUE}
+# Activación del "universo ordenado"
+library(tidyverse)
+
+# Sintáxis ggplot2
+ggplot(data = DF,  # base de datos
+       mapping = aes(x, y, ...)) + # estéticas
+  geom_...  + # geométricas a graficar
+  scale_...  + # funciones que modifican las estéticas
+  ...
+```
+
+## 6.1. El famoso ggplot2 {auto-animate="true"}
+
+Con `ggplot2` **sumamos capas** en el gráfico resultante. Una versión simplificada de su código sería:
+
+```{r, eval=FALSE, echo=TRUE}
+# Activación del "universo ordenado"
+library(tidyverse)
+
+# Sintáxis ggplot2
+ggplot(data = DF,  # base de datos
+       mapping = aes(x, y, ...)) + # estéticas
+  geom_...  + # geométricas a graficar
+  scale_...  + # funciones que modifican las estéticas
+  theme()    + # modificadores de estilo
+  ...
+```
+
+## 6.1. El famoso ggplot2 {auto-animate="true"}
+
+Con `ggplot2` **sumamos capas** en el gráfico resultante. Una versión simplificada de su código sería:
+
+```{r, eval=FALSE, echo=TRUE}
+# Activación del "universo ordenado"
+library(tidyverse)
+
+# Sintáxis ggplot2
+ggplot(data = DF,  # base de datos
+       mapping = aes(x, y, ...)) + # estéticas
+  geom_...  + # geométricas a graficar
+  scale_...  + # funciones que modifican las estéticas
+  theme()    + # modificadores de estilo
+  otras funciones adicionales
+```
+
+## 6.2. Gráficos de dispersión de puntos {transition="zoom-in"}
+
+Piensa en la **relación de dos variables numéricas**. Tomemos las columnas 1 y 2 de la base de datos `airquality`.
+
+```{r, echo=TRUE}
+# Activa la base
+data("airquality")
+
+# Primeras 6 filas
+head(airquality)
+```
+
+## 6.2. Gráficos de dispersión de puntos
+
+La mejor forma de representar esta relación sería con un *scatterplot* o gráfico de dispersión de puntos.
+
+```{r, echo=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=TRUE, fig.align='center', out.width="70%"}
+# Crea el objeto ggplot: 
+# define la base de datos y las estéticas
+ggplot(data = airquality, aes(x=Ozone, y=Solar.R))
+
+```
+
+## 6.2. Gráficos de dispersión de puntos {auto-animate="true"}
+
+```{r, echo=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=TRUE, fig.align='center', out.width="70%"}
+# adiciona la geométrica respectiva
+ggplot(data = airquality, aes(x=Ozone, y=Solar.R)) +
+  geom_point(color="blue")
+```
+
+## 6.2. Gráficos de dispersión de puntos {auto-animate="true"}
+
+```{r, echo=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=TRUE, fig.align='center', out.width="70%"}
+# adiciona una línea de regresión no lineal
+ggplot(data = airquality, aes(x=Ozone, y=Solar.R)) +
+  geom_point(color="blue")+
+  geom_smooth(method="gam", fill="deepskyblue")
+```
+
+## 6.2. Gráficos de dispersión de puntos {auto-animate="true"}
+
+```{r, echo=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=TRUE, fig.align='center', out.width="70%"}
+# adiciona un tema predefinido en la librería ggstatsplot
+ggplot(data = airquality, aes(x=Ozone, y=Solar.R)) +
+  geom_point(color="blue")+
+  geom_smooth(method="gam", fill="deepskyblue")+
+  ggstatsplot::theme_ggstatsplot()
+```
+
+## 6.2. Gráficos de dispersión de puntos {auto-animate="true"}
+
+Otras estéticas importantes son las de color y rellenado en base a un factor.
+
+```{r, echo=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=TRUE, fig.align='center', out.width="70%"}
+# adiciona un tema predefinido en la librería ggstatsplot
+ggplot(data = airquality, aes(x=Ozone, y=Solar.R, 
+                              color=factor(Month),
+                              fill=factor(Month))) +
+  geom_point()+
+  geom_smooth(method="lm", se=FALSE)+
+  ggstatsplot::theme_ggstatsplot()
+```
+
+## 6.2. Gráficos de dispersión de puntos {auto-animate="true"}
+
+```{r, echo=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=TRUE, fig.align='center', out.width="70%"}
+# coloca funciones adicionales
+G1 <- ggplot(data = airquality, aes(x=Ozone, y=Solar.R, 
+                              color=factor(Month),
+                              fill=factor(Month))) +
+  geom_point()+
+  geom_smooth(method="lm", se=FALSE)+
+  ggstatsplot::theme_ggstatsplot()+
+  labs(x="Ozono (ppm)", y="Radiación solar", 
+       color="Mes", fill="Mes")+
+  facet_wrap(~Month)
+
+G1
+```
+
+## 6.3. Funsión de densidad {auto-animate="true"}
+
+En caso de no necesitar relacionar dos variables, una de las mejores maneras de **visualizar una sola variable numérica** es utilizando un gráfico con su función de densidad *density plots*. Nosotros le ofrecemos el eje X y la geométrica produce el eje Y. Trabajemos con la temperatura por mes.
+
+```{r, echo=TRUE}
+G2 <- ggplot(data = airquality, aes(x=Temp, 
+                              color=factor(Month),
+                              fill=factor(Month))) +
+  geom_density(alpha=0.3)+
+  ggstatsplot::theme_ggstatsplot()+
+  labs(x="Temperatura (°F)", y="Función de densidad", 
+       color="Mes", fill="Mes")
+
+G2
+```
+
+## 6.4. Gráficos de barras {auto-animate="true"}
+
+Las variables categóricas no pueden ser evaluadas ni con *scatterplots* ni *density plots*. Para ellas, un gráfico de barras es lo más adecuado. Mostrará la frecuencia de cada categoría como altura de sus respectivas barras.
+
+```{r, echo=TRUE}
+G3 <- ggplot(data = airquality, aes(x=Month, 
+                              color=factor(Month),
+                              fill=factor(Month))) +
+  geom_bar(alpha=0.3)+
+  ggstatsplot::theme_ggstatsplot()+
+  labs(x="Temperatura (°F)", y="Función de densidad", 
+       color="Mes", fill="Mes") +
+  stat_count(geom="text", aes(label=..count..), color="black", vjust=-0.5)
+
+G3
+```
+
+# [Estos fueron los fundamentos de programación que R que necesitas. Estás lista(o) para el]{style="font-weight: lighter; color:#000000;"}[*Course Wrap Up!*]{style="color:#4e00ff;"} y unificar lo aprendido en un problema a resolver que te dejará una útil función para explorar tu data. {background-image="figs/00_Background_Section.png"}
+
+<br> <br> <br>
+
+## 6.5. Agrupar gráficos de ggplot2
+
+Hay muchas maneras de agrupar gráficos. Una opción simple la facilita `ggarrange()` de la librería `ggpubr`.
+
+```{r, echo=TRUE, fig.align='center', fig.height=4.5}
+# Podemos darle los gráficos como elementos independientes
+library(ggpubr)
+G1_G3 <- ggarrange(G1, G2, G3, ncol = 3, nrow = 1)
+
+# Imprimir el gráfico
+G1_G3
+```
+
+## 6.5. Agrupar gráficos de ggplot2
+
+Hay muchas maneras de agrupar gráficos. Una opción simple la facilita `ggarrange()` de la librería `ggpubr`.
+
+```{r, echo=TRUE, fig.align='center', fig.height=4.5}
+# O podemos darle una lista de gráficos
+library(ggpubr)
+
+listaG <- list(G1, G2, G3)
+
+G1_G3L <- ggarrange(plotlist = listaG, ncol = 3, nrow = 1)
+
+# Imprimir el gráfico
+G1_G3L
+```
+
+## Course Wrap Up: reto final
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("figs/03_cwu.png", dpi=600)
+```

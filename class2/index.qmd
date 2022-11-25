@@ -1,0 +1,844 @@
+---
+title: "Fundamentos de programación con R"
+subtitle: "Track: Estadística y programación con R2022-3"
+author: "Irwing S. Saldaña"
+format: 
+  revealjs:
+    revealjs-plugins:
+     - fullscreen
+    touch: true
+    auto-stretch: false 
+    incremental: false
+    smaller: true
+    scrollable: true
+    theme: mytheme.scss
+    transition: none
+    background-transition: none
+    logo: figs/logo.png
+    chalkboard:
+      chalk-effect: 0.4
+      boardmarker-width: 3
+      chalk-width: 4.4
+      buttons: true
+    footer: "Fundamentos de R"
+execute:
+  cache: true
+editor: source
+title-slide-attributes:
+    data-background-image: "figs/FondoPrincipal.jpg"
+    data-background-size: cover
+    data-background-opacity: "number"
+editor_options: 
+  chunk_output_type: console
+---
+
+# Sintaxis del lenguaje R
+
+<h2 style="color:#696969;">
+
+Clase 2
+
+</h2>
+
+# Sección 4: Introducción al código de R {background-image="figs/00_Background_Section.png"}
+
+## 4.1. Primera estructura de datos: vectores {transition="zoom-in"}
+
+::: columns
+::: column
+En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector
+
+```{r, echo=TRUE, eval=FALSE}
+# Vector numérico
+c(1,2,3,4,5,6,7,8,9,10)
+```
+:::
+
+::: column
+```{r, fig.align='center',out.width="70%"}
+knitr::include_graphics("figs/02_Vector.png", dpi=600)
+```
+:::
+:::
+
+## 4.1. Primera estructura de datos: vectores {auto-animate="true"}
+
+::: columns
+::: column
+En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector
+
+```{r, echo=TRUE}
+# Vector numérico
+c(1,2,3,4,5,6,7,8,9,10)
+```
+:::
+
+::: column
+```{r, fig.align='center',out.width="70%"}
+knitr::include_graphics("figs/02_Vector.png", dpi=600)
+```
+:::
+:::
+
+## 4.1. Primera estructura de datos: vectores {auto-animate="true"}
+
+En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector
+
+```{r, echo=TRUE, eval=FALSE}
+# Vector de carácteres (string o cadena de texto)
+c("Tumbes","Trujillo","Chiclayo","Iquitos","Arequipa",
+  "Huancayo","Pucallpa","Ilo","Ica","Tarapoto")
+```
+
+## 4.1. Primera estructura de datos: vectores {auto-animate="true"}
+
+En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector
+
+```{r, echo=TRUE}
+# Vector de carácteres (string o cadena de texto)
+c("Tumbes","Trujillo","Chiclayo","Iquitos","Arequipa",
+  "Huancayo","Pucallpa","Ilo","Ica","Tarapoto")
+```
+
+## 4.1. Primera estructura de datos: vectores {auto-animate="true"}
+
+En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector
+
+```{r, echo=TRUE, eval=FALSE}
+# Vector de elementos lógicos
+c(TRUE, FALSE, NULL, NA, T, F, F, T)
+```
+
+## 4.1. Primera estructura de datos: vectores {auto-animate="true"}
+
+En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector
+
+```{r, echo=TRUE}
+# Vector de elementos lógicos
+c(TRUE, FALSE, NULL, NA, T, F, F, T)
+```
+
+## 4.2. Creación de variables {transition="zoom-in"}
+
+Ahora que conoces cómo crear un vector en R, podrás guardar dicha información en la memoria de RStudio: el ambiente (pestaña Environment). Para crear una variable y guardar información usa el **operador de asignación** `<-`
+
+```{r, echo=TRUE, eval=FALSE}
+# Crea las variables num_1a10, ciudades y v.logicos
+num_1a10 <- ...
+
+ciudades <- ...
+
+v.logicos <- ...
+```
+
+## 4.2. Creación de variables {auto-animate="true"}
+
+Ahora que conoces cómo crear un vector en R, podrás guardar dicha información en la memoria de RStudio: el ambiente (pestaña Environment). Para crear una variable y guardar información usa el **operador de asignación** `<-`
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+# Crea las variables num_1a10, ciudades y v.logicos
+num_1a10 <- c(1,2,3,4,5,6,7,8,9,10)
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+ciudades <- c("Tumbes","Trujillo","Chiclayo","Iquitos","Arequipa",
+  "Huancayo","Pucallpa","Ilo","Ica","Tarapoto")
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+v.logicos <- c(TRUE, FALSE, NULL, NA, T, F, F, T)
+```
+:::
+:::
+
+## 4.2. Creación de variables {auto-animate="true"}
+
+Para recuperar la información guardada en el ambiente se debe **ejecutar el nombre** de la variable contenedora:
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+# Ver el contenido de num_1a10
+num_1a10
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+# Ver el contenido de ciudades
+ciudades
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+# Ver el contenido de v.logicos
+v.logicos
+```
+:::
+:::
+
+## 4.2. Creación de variables {auto-animate="true"}
+
+Otra forma de ver los objetos (variables) del ambiente es utilizar la **funciones de visualización** `View()` (reservado para tablas, o listas, no para vectores), `head()`, `tail()`; o de **revisión de estructura** `str()`:
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+View(ciudades) #es más útil con tablas o listas
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+head(ciudades) # 6 primeros elementos o filas
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+tail(ciudades) # 6 últimos elementos o filas
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+str(ciudades) # estructura del objeto
+```
+:::
+:::
+
+## 4.2. Creación de variables {auto-animate="true"}
+
+Además podemos preguntarle a R sobre un objeto: **¿qué es el objeto?/** con `is()`, o con **preguntas lógicas específicas** como ¿el objeto es un vector? con `is.vector()`:
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+is(ciudades)
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+is.vector(ciudades)
+```
+:::
+:::
+
+## 4.3. 50 Funciones básicas en R {transition="zoom-in"}
+
+<br>
+
+```{r, echo=TRUE, eval=FALSE}
+%>%              # Pipe
+|>               # Pipe nativo
+mean()           # Promedio
+median()         # Mediana
+sd()             # Desviación estándar
+var()            # Varianza
+quantile()       # Cálculo de cuantiles
+range()          # Rango de valores
+seq_along()      # Secuencia numérica entre el máximo y mínimo
+sum()            # Sumatoria
+cumsum()         # Suma acumulada
+prod()           # Productorio
+cumprod()        # Producto acumulado
+max()            # Valor máximo
+min()            # Valor mínimo
+```
+
+## 4.3. 50 Funciones básicas en R {transition="zoom-in"}
+
+<br>
+
+```{r, echo=TRUE, eval=FALSE}
+seq()            # Crear secuencia
+rep()            # Crear vector de repeticiones
+paste0()         # Concatenar strings (textos) sin dejar espacio
+paste()          # Concatenar strings (textos)
+sort()           # Reordenar de menor a mayor, o viceversa
+rev()            # Revertir el orden
+unique()         # Valores únicos en un vector
+scale()          # Transformación: Estandarización
+lm()             # Crear modelo lineal
+glm()            # Crear modelo generalizado lineal
+aov()            # Crear anova
+summary()        # Ver resumen estadístico de un objeto de modelamiento
+chisq.test()     # Crear prueba de chi cuadrado
+t.test()         # Crear prueba de t
+cor.test()       # Calcular la correlación entre dos vectores
+```
+
+## 4.3. 50 Funciones básicas en R {transition="zoom-in"}
+
+<br>
+
+```{r, echo=TRUE, eval=FALSE}
+plot()           # Plot básico
+hist()           # Histograma de un vector
+boxplot()        # Boxplot o gráfico de cajas
+plot(density())  # Gráfico de densidad
+getwd()          # Obtener el directorio de trabajo actual
+setwd()          # Definir un directorio de trabajo
+str()            # Ver la estructura de un objeto
+View()           # Observar una tabla o lista como una pestaña
+names()          # Ver los nombres de un objeto (nombres de columna)
+length()         # Obtener la cantidad de elementos de un vector
+ncol()           # Obtener el número de columnas
+nrow()           # Obtener el número de filas
+head()           # Visualizar las primeras 6 filas de una tabla
+tail()           # Visualizar las últimas 6 filas de una tabla
+```
+
+## 4.3. 50 Funciones básicas en R {transition="zoom-in"}
+
+<br>
+
+```{r, echo=TRUE, eval=FALSE}
+rm()             # Remover un objeto
+ls()             # Lista de objetos en el ambiente
+rm(ls())         # Eliminar todos los objetos del ambiente
+dev.off()        # Reiniciar la salida gráfica
+install.packages() # Instalar una librería
+remove.packages()  # Eliminar una librería
+library()        # Activar una librería
+require()        # Activar una librería
+table()          # Crear una matriz de contingencia
+data()           # Cargar bases de dato de ejemplo en R
+round()          # Redondear dígitos
+print()          # Imprimir un objeto
+```
+
+## 4.4. Operadores relacionales {transition="zoom-in"}
+
+Se pueden aplicar operaciones relacionales para comparar valores y obtener un resultado lógico (`TRUE` o `FALSE`):
+
+::: columns
+::: {.column width="60%"}
+```{r, echo=TRUE,eval=FALSE}
+# Considerando:
+num1 <- 10
+num2 <- 3
+
+# Igual a
+
+# No igual a
+
+# Menor que
+
+# Menor igual que
+
+# Mayor que
+
+# Mayor igual que
+
+```
+:::
+
+::: {.column width="40%"}
+```{r, fig.align='center',out.width="100%"}
+knitr::include_graphics("figs/02_Relacionales.png")
+```
+:::
+:::
+
+## 4.4. Operadores relacionales {auto-animate="true"}
+
+Se pueden aplicar operaciones relacionales para comparar valores y obtener un resultado lógico (`TRUE` o `FALSE`):
+
+::: columns
+::: {.column width="60%"}
+```{r, echo=TRUE,eval=FALSE}
+# Considerando:
+num1 <- 10
+num2 <- 3
+
+num1 == num2 # Igual a
+
+num1 != num2 # No igual a
+
+num1 < num2 # Menor que
+
+num1 <= num2 # Menor igual que
+
+num1 > num2 # Mayor que
+
+num1 >= num2 # Mayor igual que
+
+```
+:::
+
+::: {.column width="40%"}
+```{r, fig.align='center',out.width="100%"}
+knitr::include_graphics("figs/02_Relacionales.png")
+```
+:::
+:::
+
+## 4.4. Operadores relacionales {auto-animate="true"}
+
+Sobre vectores de longitud mayor a 1, se aplica de modo *element-wise* elemento a elemento:
+
+::: columns
+::: {.column width="60%"}
+```{r, echo=TRUE,eval=FALSE}
+# Considerando:
+vector1 <- c(1, 39, 85)
+vector2 <- c(2, 39, 85)
+
+# Igual a
+
+# No igual a
+
+# Menor que
+
+# Menor igual que
+
+# Mayor que
+
+# Mayor igual que
+
+```
+:::
+
+::: {.column width="40%"}
+```{r, fig.align='center',out.width="100%"}
+knitr::include_graphics("figs/02_Relacionales.png")
+```
+:::
+:::
+
+## 4.4. Operadores relacionales {auto-animate="true"}
+
+Sobre vectores de longitud mayor a 1, se aplica de modo *element-wise* elemento a elemento:
+
+::: columns
+::: {.column width="60%"}
+```{r, echo=TRUE,eval=FALSE}
+# Considerando:
+vector1 <- c(1, 39, 85)
+vector2 <- c(2, 39, 85)
+
+vector1 == vector2 # Igual a
+
+vector1 != vector2 # No igual a
+
+vector1 < vector2 # Menor que
+
+vector1 <= vector2 # Menor igual que
+
+vector1 > vector2 # Mayor que
+
+vector1 >= vector2 # Mayor igual que
+```
+:::
+
+::: {.column width="40%"}
+```{r, fig.align='center',out.width="100%"}
+knitr::include_graphics("figs/02_Relacionales.png")
+```
+:::
+:::
+
+## 4.5. Operadores lógicos {transition="zoom-in"}
+
+Realiza operaciones en las que dos o más condiciones lógicas son probadas al mismo tiempo. Se utiliza principalmente para hacer filtrados en tablas:
+
+::: columns
+::: {.column width="65%"}
+```{r, echo=TRUE,eval=TRUE}
+dplyr::filter(.data = iris,
+   Petal.Length > 1.6 & Species == "setosa")
+```
+:::
+
+::: {.column width="35%"}
+```{r, fig.align='center',out.width="90%"}
+knitr::include_graphics("figs/02_Logicos.png")
+```
+:::
+:::
+
+## 4.5. Operadores lógicos {auto-animate="true"}
+
+Realiza operaciones en las que dos o más condiciones lógicas son probadas al mismo tiempo. Se utiliza principalmente para hacer filtrados en tablas:
+
+::: columns
+::: {.column width="70%"}
+```{r, echo=TRUE,eval=TRUE}
+dplyr::filter(.data = iris,
+    Petal.Length < 1.3 | Sepal.Length < 4.4)
+```
+:::
+
+::: {.column width="30%"}
+```{r, fig.align='center',out.width="90%"}
+knitr::include_graphics("figs/02_Logicos.png")
+```
+:::
+:::
+
+## 4.6. Estructuras de datos: vectores {transition="zoom-in"}
+
+-   Unidimensional.
+-   Sus posiciones inician en 1.
+-   Solo puede contener datos de una sola clase (sólo números, o texto, o elementos lógicos).
+-   Se crea con la función `c()`.
+
+```{r, fig.align='center', out.height="35%"}
+knitr::include_graphics("figs/02_Vector_Factor.png")
+```
+
+**Motivación: "crear un modelo lineal en R".**
+
+```{r, echo=TRUE}
+# Crear un modelo lineal
+modelo_i <- lm(Petal.Length ~ Species + Sepal.Length, data = iris)
+```
+
+## 4.6. Estructuras de datos: vectores {auto-animate="true"}
+
+**Motivación: "crear un modelo lineal en R".**
+
+```{r, echo=TRUE}
+# Crear un modelo lineal
+modelo_i <- lm(Petal.Length~ Species + Sepal.Length, data = iris)
+
+# Ver el resumen estadístico del modelo
+summary(modelo_i)
+```
+
+## 4.6. Estructuras de datos: vectores {auto-animate="true"}
+
+```{r, echo=TRUE}
+# Extraer los coeficientes del modelo
+coeficientes <- coef(modelo_i)
+```
+
+## 4.6. Estructuras de datos: vectores {auto-animate="true"}
+
+```{r, echo=TRUE}
+# Extraer los coeficientes del modelo
+coeficientes <- coef(modelo_i)
+
+# Ver los coeficientes
+coeficientes
+```
+
+## 4.6. Estructuras de datos: vectores {auto-animate="true"}
+
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+names(coeficientes)
+```
+
+La forma manual de darle nombres a las posiciones de un vector es asignándole un vector de caracteres con los nombres:
+:::
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+names(coeficientes) <- c("Nombre1", "Nombre2", "Nombre3", "Nombre4")
+```
+:::
+
+## 4.6. Estructuras de datos: vectores {auto-animate="true"}
+
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+names(coeficientes)
+```
+
+Entender esto les ayudará a la interpretación de modelos, y a manejar información en R. La forma manual de darle nombres a las posiciones de un vector es asignándole un vector de caracteres con los nombres:
+:::
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+names(coeficientes) <- c("Nombre1", "Nombre2", "Nombre3", "Nombre4")
+
+# Revisando si se aplicaron los cambios
+coeficientes
+```
+:::
+
+## 4.6. Estructuras de datos: vectores {auto-animate="true"}
+
+¿Puedo crear más rápido un vector de nombres?
+
+## 4.6. Estructuras de datos: vectores {auto-animate="true"}
+
+¡Sí!, con **concatenaciones de texto**.
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+# Usando paste0()
+paste0("Nombre",1:10)
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+```{r, echo=TRUE}
+# Usando paste()
+paste("Con espacio", 1:10)
+```
+:::
+:::
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+# Usando paste()
+paste("Con espacio definido", 1:5, sep="____")
+```
+:::
+
+## 4.7. Estructuras de datos: data.frame {transition="zoom-in"}
+
+Data.frame el nombre *fancy* de una **tabla** (estructura de dos dimensiones: filas y columnas). Se crean con la función `data.frame()`.
+
+```{r, fig.align='center', out.width="30%"}
+knitr::include_graphics("figs/02_Dataframe.png")
+```
+
+## 4.7. Estructuras de datos: data.frame {transition="zoom-in"}
+
+```{r, echo=TRUE}
+# Usando los vectores
+num_1a10 <- c(1,2,3,4,5,6,7,8,9,10)
+ciudades <- c("Tumbes","Trujillo","Chiclayo","Iquitos","Arequipa",
+  "Huancayo","Pucallpa","Ilo","Ica","Tarapoto")
+
+# Crear la data.frame
+Base <- data.frame(Nume = num_1a10, 
+                   Ciud = ciudades)
+
+# Imprimir la base completa en la consola
+Base
+```
+
+## 4.7. Estructuras de datos: data.frame {transition="zoom-in"}
+
+```{r, echo=TRUE}
+# Imprimir las primeras 6 filas
+head(Base)
+
+# Imprimir las últimas 6 filas
+tail(Base)
+```
+
+## 4.7. Estructuras de datos: data.frame {transition="zoom-in"}
+
+```{r, echo=TRUE}
+# Número de columnas
+ncol(Base)
+
+# Número de filas
+nrow(Base)
+
+# Nombres de las columnas
+colnames(Base)
+names(Base)
+
+# Nombres de las filas
+rownames(Base)
+```
+
+## 4.7. Estructuras de datos: data.frame {transition="zoom-in"}
+
+```{r, echo=TRUE}
+# Dimensiones
+dim(Base)
+
+# Visualizar la base
+View(Base)
+
+# Revisar la estructura
+str(Base)
+
+# Convertir a factor una columna de la base
+Base$Ciud <- factor(Base$Ciud)
+
+# Revisando el cambio
+str(Base)
+```
+
+## 4.8. Estructuras de datos: factores {transition="zoom-in"}
+
+::: incremental
+-   Un factor es un vector de caracteres (string) donde cada elemento pertenece a una categoría. Por lo tanto, el factor es la manera en la que **R entenderá que nuestra variable es categórica**. Esto nos sirve para graficar, modelar y analizar los datos.
+-   La manera de crear un factor es coerciendo un vector de caracteres.
+:::
+
+## 4.8. Estructuras de datos: factores {auto-animate="TRUE"}
+
+-   Un factor es un vector de caracteres (string) donde cada elemento pertenece a una categoría. Por lo tanto, el factor es la manera en la que **R entenderá que nuestra variable es categórica**. Esto nos sirve para graficar, modelar y analizar los datos.
+-   La manera de crear un factor es coerciendo un vector de caracteres.
+
+```{r, echo=TRUE}
+# Creando un vector de texto cualquiera 
+# por repetición de caracteres usando rep()
+categorias_vector <- rep(c("B","D","C","E","A"), c(4,8,6,10,3))
+
+# Visualizando el contenido
+categorias_vector
+```
+
+## 4.8. Estructuras de datos: factores {auto-animate="TRUE"}
+
+```{r, echo=TRUE}
+# Crear el factor a partir del vector categorias_vector
+f1 <- factor(categorias_vector)
+
+# Visualizando el contenido
+f1
+```
+
+::: incremental
+-   Encontraremos que ahora el factor muestra sus niveles o categorías (`Levels`).
+-   Por lo tanto, los factores son vectores de texto especiales que tienen propiedades únicas.
+:::
+
+## 4.8. Estructuras de datos: factores {auto-animate="TRUE"}
+
+```{r, echo=FALSE}
+f1 <- factor(categorias_vector)
+```
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+# Revisar los niveles de un factor
+levels(f1)
+```
+:::
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+# Cambiar el nivel base (primer nivel) de un factor
+relevel(f1, ref = "D")
+```
+:::
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+# Cambiar el orden de los niveles a mano
+forcats::fct_relevel(f1, "D","E","C","A","B")
+```
+:::
+
+## 4.8. Estructuras de datos: factores {auto-animate="TRUE"}
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+# Contar cuántas observaciones hay por nivel
+forcats::fct_count(f1)
+```
+:::
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+# Cambiar los niveles que 
+# no son de interés por una etiqueta única
+forcats::fct_other(f1, keep = c("A","C","E"), other_level = "Otros")
+```
+:::
+
+## 4.8. Estructuras de datos: factores {auto-animate="TRUE"}
+
+::: {.fragment .fade-up}
+```{r, echo=TRUE}
+# Cambiar el nombre de uno más niveles
+forcats::fct_recode(f1, 
+                    "Amazonas" = "A",
+                    "Ecuador" = "E")
+```
+:::
+
+## 4.8. Estructuras de datos: factores {auto-animate="TRUE"}
+
+También se puede cambiar el orden de un factor en base a otra variable
+
+```{r, echo=TRUE, fig.align='center', out.width="80%"}
+##   Comencemos con un ejemplo de boxplot
+##   donde el orden del factor Species es alfabético
+boxplot(Sepal.Width ~ Species, data = iris)
+```
+
+## 
+
+```{r, echo=TRUE, fig.align='center', out.width="80%"}
+## Aplicando el reordenamiento con fct_reorder(). Calcula un
+## estadístico (median) de una columna de datos numérica (Sepal.Width)
+## por grupo (Species) de manera descendente (.desc = TRUE)
+SP_Reordenada <- forcats::fct_reorder(iris$Species, .x = iris$Sepal.Width, 
+                                      .fun = median, .desc = TRUE)
+
+boxplot(Sepal.Width ~ SP_Reordenada, data = iris)
+```
+
+
+## 4.9. Estructuras de datos: listas {transition="zoom-in"}
+
+:::: columns
+::: {.column width="25%"}
+Las listas son estructuras que almacenan cualquier otro tipo de estructuras de datos (matrices, vectores, factores, etc.), incluso pueden almacenar otras listas.
+:::
+
+::: {.column width="75%"}
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("figs/02_Estructuras_datos_libro.png")
+```
+:::
+::::
+
+## 4.10. Recapitulación de indexación {transition="zoom-in"}
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+-   Utiliza `[]` para indexar vectores y factores.
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+-   Utiliza `[fila, columna]` para indexar bases de datos bidimensionales: data.frame y tibbles.
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+-   Utiliza `$` para indexar una columna entera de una data.frame o tible.
+-   Además, `$` sirve para indexar cualquier posición de una lista nombrada.
+:::
+:::
+
+::: {.fragment .fade-up}
+::: {.fragment .semi-fade-out}
+-   Utiliza `[[]]` para indexar listas no nombradas.
+:::
+:::
+
+# Fin {.center1}

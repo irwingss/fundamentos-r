@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.1.189">
+
+  <meta name="author" content="Irwing S. Saldaña">
+  <title>Fundamentos de programación con R</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="figs/FondoPrincipal.jpg" data-background-opacity="number" data-background-size="cover" class="center">
+  <h1 class="title">Fundamentos de programación con R</h1>
+  <p class="subtitle">Track: Estadística y programación con R2022-3</p>
+  <p class="author">Irwing S. Saldaña</p>
+</section>
+
+<section id="sintaxis-del-lenguaje-r" class="title-slide slide level1 center">
+<h1>Sintaxis del lenguaje R</h1>
+<h2 style="color:#696969;">
+<p>Clase 2</p>
+</h2>
+</section>
+
+<section>
+<section id="sección-4-introducción-al-código-de-r" class="title-slide slide level1 center" data-background-image="figs/00_Background_Section.png">
+<h1>Sección 4: Introducción al código de R</h1>
+
+</section>
+<section id="primera-estructura-de-datos-vectores" class="slide level2" data-transition="zoom-in">
+<h2>4.1. Primera estructura de datos: vectores</h2>
+<div class="columns">
+<div class="column">
+<p>En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-1_3d79006cf679569c87589e309aff7187">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Vector numérico</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-2_f9fd725a2b2e60e4fb03abb525915148">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Vector.png" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="primera-estructura-de-datos-vectores-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Primera estructura de datos: vectores</h2>
+<div class="columns">
+<div class="column">
+<p>En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-3_f2c413aac18ba684f1ca5eefb4841dcc">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a href="#cb2-1"></a><span class="co"># Vector numérico</span></span>
+<span id="cb2-2" class="hljs-ln-code"><a href="#cb2-2"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-4_262f84d51a3bb2a4368267a22787b31c">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Vector.png" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="primera-estructura-de-datos-vectores-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Primera estructura de datos: vectores</h2>
+<p>En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-5_6c8cc33651b1374be16b2d5124525088">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a href="#cb4-1"></a><span class="co"># Vector de carácteres (string o cadena de texto)</span></span>
+<span id="cb4-2" class="hljs-ln-code"><a href="#cb4-2"></a><span class="fu">c</span>(<span class="st">"Tumbes"</span>,<span class="st">"Trujillo"</span>,<span class="st">"Chiclayo"</span>,<span class="st">"Iquitos"</span>,<span class="st">"Arequipa"</span>,</span>
+<span id="cb4-3" class="hljs-ln-code"><a href="#cb4-3"></a>  <span class="st">"Huancayo"</span>,<span class="st">"Pucallpa"</span>,<span class="st">"Ilo"</span>,<span class="st">"Ica"</span>,<span class="st">"Tarapoto"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="primera-estructura-de-datos-vectores-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Primera estructura de datos: vectores</h2>
+<p>En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-6_651dcebaefb24b90baa04e948464ebe4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a href="#cb5-1"></a><span class="co"># Vector de carácteres (string o cadena de texto)</span></span>
+<span id="cb5-2" class="hljs-ln-code"><a href="#cb5-2"></a><span class="fu">c</span>(<span class="st">"Tumbes"</span>,<span class="st">"Trujillo"</span>,<span class="st">"Chiclayo"</span>,<span class="st">"Iquitos"</span>,<span class="st">"Arequipa"</span>,</span>
+<span id="cb5-3" class="hljs-ln-code"><a href="#cb5-3"></a>  <span class="st">"Huancayo"</span>,<span class="st">"Pucallpa"</span>,<span class="st">"Ilo"</span>,<span class="st">"Ica"</span>,<span class="st">"Tarapoto"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Tumbes"   "Trujillo" "Chiclayo" "Iquitos"  "Arequipa" "Huancayo"
+ [7] "Pucallpa" "Ilo"      "Ica"      "Tarapoto"</code></pre>
+</div>
+</div>
+</section>
+<section id="primera-estructura-de-datos-vectores-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Primera estructura de datos: vectores</h2>
+<p>En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_daab4f772e357c1ec613dbf446b86933">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb7-1" class="hljs-ln-code"><a href="#cb7-1"></a><span class="co"># Vector de elementos lógicos</span></span>
+<span id="cb7-2" class="hljs-ln-code"><a href="#cb7-2"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NULL</span>, <span class="cn">NA</span>, T, F, F, T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="primera-estructura-de-datos-vectores-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Primera estructura de datos: vectores</h2>
+<p>En programación, los datos son la base fundamental de los procesos. La forma más sencilla de ordenar los datos es colocándo todo en un vector</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_fafa548955e81245e57eb8973ac12e64">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a href="#cb8-1"></a><span class="co"># Vector de elementos lógicos</span></span>
+<span id="cb8-2" class="hljs-ln-code"><a href="#cb8-2"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NULL</span>, <span class="cn">NA</span>, T, F, F, T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE    NA  TRUE FALSE FALSE  TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="creación-de-variables" class="slide level2" data-transition="zoom-in">
+<h2>4.2. Creación de variables</h2>
+<p>Ahora que conoces cómo crear un vector en R, podrás guardar dicha información en la memoria de RStudio: el ambiente (pestaña Environment). Para crear una variable y guardar información usa el <strong>operador de asignación</strong> <code>&lt;-</code></p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-9_7ce145444ee731c3e80968b722c2ae54">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Crea las variables num_1a10, ciudades y v.logicos</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>num_1a10 <span class="ot">&lt;-</span> ...</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>ciudades <span class="ot">&lt;-</span> ...</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>v.logicos <span class="ot">&lt;-</span> ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creación-de-variables-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2. Creación de variables</h2>
+<p>Ahora que conoces cómo crear un vector en R, podrás guardar dicha información en la memoria de RStudio: el ambiente (pestaña Environment). Para crear una variable y guardar información usa el <strong>operador de asignación</strong> <code>&lt;-</code></p>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-10_7a44d1bda8ae4a0c95046002edecda57">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Crea las variables num_1a10, ciudades y v.logicos</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>num_1a10 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_ea151cb07a8f54fc99ae8b653ac9eb89">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>ciudades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Tumbes"</span>,<span class="st">"Trujillo"</span>,<span class="st">"Chiclayo"</span>,<span class="st">"Iquitos"</span>,<span class="st">"Arequipa"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="st">"Huancayo"</span>,<span class="st">"Pucallpa"</span>,<span class="st">"Ilo"</span>,<span class="st">"Ica"</span>,<span class="st">"Tarapoto"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-12_a77ed124e53f4f94e1fcc2cd82b243e1">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>v.logicos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NULL</span>, <span class="cn">NA</span>, T, F, F, T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creación-de-variables-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2. Creación de variables</h2>
+<p>Para recuperar la información guardada en el ambiente se debe <strong>ejecutar el nombre</strong> de la variable contenedora:</p>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-13_e172df786cfc87ef53d395a91288a7ac">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Ver el contenido de num_1a10</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>num_1a10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_e31e5b6c8dfb298882e25abd3c0925d4">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Ver el contenido de ciudades</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>ciudades</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Tumbes"   "Trujillo" "Chiclayo" "Iquitos"  "Arequipa" "Huancayo"
+ [7] "Pucallpa" "Ilo"      "Ica"      "Tarapoto"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-15_d241a040d8bcf2cbc86ddaffe1993192">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Ver el contenido de v.logicos</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>v.logicos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE    NA  TRUE FALSE FALSE  TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="creación-de-variables-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2. Creación de variables</h2>
+<p>Otra forma de ver los objetos (variables) del ambiente es utilizar la <strong>funciones de visualización</strong> <code>View()</code> (reservado para tablas, o listas, no para vectores), <code>head()</code>, <code>tail()</code>; o de <strong>revisión de estructura</strong> <code>str()</code>:</p>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_8e5240bd346574227660051c30d4de68">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">View</span>(ciudades) <span class="co">#es más útil con tablas o listas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_b800339fb9761e5787a0a6549cbc8025">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">head</span>(ciudades) <span class="co"># 6 primeros elementos o filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tumbes"   "Trujillo" "Chiclayo" "Iquitos"  "Arequipa" "Huancayo"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_a49317b25b8338a7b118213bbe9f3d53">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">tail</span>(ciudades) <span class="co"># 6 últimos elementos o filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Arequipa" "Huancayo" "Pucallpa" "Ilo"      "Ica"      "Tarapoto"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_c6837f1045c1a267a3adf7aa311438d0">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">str</span>(ciudades) <span class="co"># estructura del objeto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> chr [1:10] "Tumbes" "Trujillo" "Chiclayo" "Iquitos" "Arequipa" "Huancayo" ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="creación-de-variables-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2. Creación de variables</h2>
+<p>Además podemos preguntarle a R sobre un objeto: <strong>¿qué es el objeto?/</strong> con <code>is()</code>, o con <strong>preguntas lógicas específicas</strong> como ¿el objeto es un vector? con <code>is.vector()</code>:</p>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_750b801e3840728cbae56a49eae7ba51">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">is</span>(ciudades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"           "vector"              "data.frameRowLabels"
+[4] "SuperClassMethod"   </code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_aa14fcee1c711587ff0aa496660b6c3c">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">is.vector</span>(ciudades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="funciones-básicas-en-r" class="slide level2" data-transition="zoom-in">
+<h2>4.3. 50 Funciones básicas en R</h2>
+<p><br></p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_512a0e6715bbfbbe5e2f9d130ea8083f">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="sc">%&gt;%</span>              <span class="co"># Pipe</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="er">|&gt;</span>               <span class="co"># Pipe nativo</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">mean</span>()           <span class="co"># Promedio</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="fu">median</span>()         <span class="co"># Mediana</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="fu">sd</span>()             <span class="co"># Desviación estándar</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="fu">var</span>()            <span class="co"># Varianza</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="fu">quantile</span>()       <span class="co"># Cálculo de cuantiles</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="fu">range</span>()          <span class="co"># Rango de valores</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="fu">seq_along</span>()      <span class="co"># Secuencia numérica entre el máximo y mínimo</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="fu">sum</span>()            <span class="co"># Sumatoria</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="fu">cumsum</span>()         <span class="co"># Suma acumulada</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a><span class="fu">prod</span>()           <span class="co"># Productorio</span></span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="fu">cumprod</span>()        <span class="co"># Producto acumulado</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a><span class="fu">max</span>()            <span class="co"># Valor máximo</span></span>
+<span id="cb31-15"><a href="#cb31-15"></a><span class="fu">min</span>()            <span class="co"># Valor mínimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="funciones-básicas-en-r-1" class="slide level2" data-transition="zoom-in">
+<h2>4.3. 50 Funciones básicas en R</h2>
+<p><br></p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_27e52846e34f1b16526796c497ff7423">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">seq</span>()            <span class="co"># Crear secuencia</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">rep</span>()            <span class="co"># Crear vector de repeticiones</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="fu">paste0</span>()         <span class="co"># Concatenar strings (textos) sin dejar espacio</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="fu">paste</span>()          <span class="co"># Concatenar strings (textos)</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="fu">sort</span>()           <span class="co"># Reordenar de menor a mayor, o viceversa</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="fu">rev</span>()            <span class="co"># Revertir el orden</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="fu">unique</span>()         <span class="co"># Valores únicos en un vector</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="fu">scale</span>()          <span class="co"># Transformación: Estandarización</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="fu">lm</span>()             <span class="co"># Crear modelo lineal</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="fu">glm</span>()            <span class="co"># Crear modelo generalizado lineal</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a><span class="fu">aov</span>()            <span class="co"># Crear anova</span></span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="fu">summary</span>()        <span class="co"># Ver resumen estadístico de un objeto de modelamiento</span></span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="fu">chisq.test</span>()     <span class="co"># Crear prueba de chi cuadrado</span></span>
+<span id="cb32-14"><a href="#cb32-14"></a><span class="fu">t.test</span>()         <span class="co"># Crear prueba de t</span></span>
+<span id="cb32-15"><a href="#cb32-15"></a><span class="fu">cor.test</span>()       <span class="co"># Calcular la correlación entre dos vectores</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="funciones-básicas-en-r-2" class="slide level2" data-transition="zoom-in">
+<h2>4.3. 50 Funciones básicas en R</h2>
+<p><br></p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_462a6d8ce5c43c74ca78c00314edb362">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">plot</span>()           <span class="co"># Plot básico</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">hist</span>()           <span class="co"># Histograma de un vector</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="fu">boxplot</span>()        <span class="co"># Boxplot o gráfico de cajas</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="fu">plot</span>(<span class="fu">density</span>())  <span class="co"># Gráfico de densidad</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="fu">getwd</span>()          <span class="co"># Obtener el directorio de trabajo actual</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a><span class="fu">setwd</span>()          <span class="co"># Definir un directorio de trabajo</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="fu">str</span>()            <span class="co"># Ver la estructura de un objeto</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="fu">View</span>()           <span class="co"># Observar una tabla o lista como una pestaña</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a><span class="fu">names</span>()          <span class="co"># Ver los nombres de un objeto (nombres de columna)</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a><span class="fu">length</span>()         <span class="co"># Obtener la cantidad de elementos de un vector</span></span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="fu">ncol</span>()           <span class="co"># Obtener el número de columnas</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a><span class="fu">nrow</span>()           <span class="co"># Obtener el número de filas</span></span>
+<span id="cb33-13"><a href="#cb33-13"></a><span class="fu">head</span>()           <span class="co"># Visualizar las primeras 6 filas de una tabla</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a><span class="fu">tail</span>()           <span class="co"># Visualizar las últimas 6 filas de una tabla</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="funciones-básicas-en-r-3" class="slide level2" data-transition="zoom-in">
+<h2>4.3. 50 Funciones básicas en R</h2>
+<p><br></p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_d5116b13ca05571b7a14596ad91ea9d8">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">rm</span>()             <span class="co"># Remover un objeto</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">ls</span>()             <span class="co"># Lista de objetos en el ambiente</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="fu">rm</span>(<span class="fu">ls</span>())         <span class="co"># Eliminar todos los objetos del ambiente</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="fu">dev.off</span>()        <span class="co"># Reiniciar la salida gráfica</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a><span class="fu">install.packages</span>() <span class="co"># Instalar una librería</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="fu">remove.packages</span>()  <span class="co"># Eliminar una librería</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a><span class="fu">library</span>()        <span class="co"># Activar una librería</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a><span class="fu">require</span>()        <span class="co"># Activar una librería</span></span>
+<span id="cb34-9"><a href="#cb34-9"></a><span class="fu">table</span>()          <span class="co"># Crear una matriz de contingencia</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a><span class="fu">data</span>()           <span class="co"># Cargar bases de dato de ejemplo en R</span></span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="fu">round</span>()          <span class="co"># Redondear dígitos</span></span>
+<span id="cb34-12"><a href="#cb34-12"></a><span class="fu">print</span>()          <span class="co"># Imprimir un objeto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="operadores-relacionales" class="slide level2" data-transition="zoom-in">
+<h2>4.4. Operadores relacionales</h2>
+<p>Se pueden aplicar operaciones relacionales para comparar valores y obtener un resultado lógico (<code>TRUE</code> o <code>FALSE</code>):</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_7c0547b8f39a5cb18f281218ec0fa0af">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Considerando:</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>num1 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>num2 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="co"># Igual a</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="co"># No igual a</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a></span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="co"># Menor que</span></span>
+<span id="cb35-10"><a href="#cb35-10"></a></span>
+<span id="cb35-11"><a href="#cb35-11"></a><span class="co"># Menor igual que</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a></span>
+<span id="cb35-13"><a href="#cb35-13"></a><span class="co"># Mayor que</span></span>
+<span id="cb35-14"><a href="#cb35-14"></a></span>
+<span id="cb35-15"><a href="#cb35-15"></a><span class="co"># Mayor igual que</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-27_93ef4c3e30311d1f6a481c2bf8bb6cbc">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Relacionales.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="operadores-relacionales-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.4. Operadores relacionales</h2>
+<p>Se pueden aplicar operaciones relacionales para comparar valores y obtener un resultado lógico (<code>TRUE</code> o <code>FALSE</code>):</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_0bd44573dee70c98b26b03e97a0d9611">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb36-1" class="hljs-ln-code"><a href="#cb36-1"></a><span class="co"># Considerando:</span></span>
+<span id="cb36-2" class="hljs-ln-code"><a href="#cb36-2"></a>num1 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb36-3" class="hljs-ln-code"><a href="#cb36-3"></a>num2 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb36-4" class="hljs-ln-code"><a href="#cb36-4"></a></span>
+<span id="cb36-5" class="hljs-ln-code"><a href="#cb36-5"></a>num1 <span class="sc">==</span> num2 <span class="co"># Igual a</span></span>
+<span id="cb36-6" class="hljs-ln-code"><a href="#cb36-6"></a></span>
+<span id="cb36-7" class="hljs-ln-code"><a href="#cb36-7"></a>num1 <span class="sc">!=</span> num2 <span class="co"># No igual a</span></span>
+<span id="cb36-8" class="hljs-ln-code"><a href="#cb36-8"></a></span>
+<span id="cb36-9" class="hljs-ln-code"><a href="#cb36-9"></a>num1 <span class="sc">&lt;</span> num2 <span class="co"># Menor que</span></span>
+<span id="cb36-10" class="hljs-ln-code"><a href="#cb36-10"></a></span>
+<span id="cb36-11" class="hljs-ln-code"><a href="#cb36-11"></a>num1 <span class="sc">&lt;=</span> num2 <span class="co"># Menor igual que</span></span>
+<span id="cb36-12" class="hljs-ln-code"><a href="#cb36-12"></a></span>
+<span id="cb36-13" class="hljs-ln-code"><a href="#cb36-13"></a>num1 <span class="sc">&gt;</span> num2 <span class="co"># Mayor que</span></span>
+<span id="cb36-14" class="hljs-ln-code"><a href="#cb36-14"></a></span>
+<span id="cb36-15" class="hljs-ln-code"><a href="#cb36-15"></a>num1 <span class="sc">&gt;=</span> num2 <span class="co"># Mayor igual que</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-29_991d4df7090894ccaf5297062ca32652">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Relacionales.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="operadores-relacionales-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.4. Operadores relacionales</h2>
+<p>Sobre vectores de longitud mayor a 1, se aplica de modo <em>element-wise</em> elemento a elemento:</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-30_91339d4971c7b50ba4e825765e371841">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb37-1" class="hljs-ln-code"><a href="#cb37-1"></a><span class="co"># Considerando:</span></span>
+<span id="cb37-2" class="hljs-ln-code"><a href="#cb37-2"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">39</span>, <span class="dv">85</span>)</span>
+<span id="cb37-3" class="hljs-ln-code"><a href="#cb37-3"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">39</span>, <span class="dv">85</span>)</span>
+<span id="cb37-4" class="hljs-ln-code"><a href="#cb37-4"></a></span>
+<span id="cb37-5" class="hljs-ln-code"><a href="#cb37-5"></a><span class="co"># Igual a</span></span>
+<span id="cb37-6" class="hljs-ln-code"><a href="#cb37-6"></a></span>
+<span id="cb37-7" class="hljs-ln-code"><a href="#cb37-7"></a><span class="co"># No igual a</span></span>
+<span id="cb37-8" class="hljs-ln-code"><a href="#cb37-8"></a></span>
+<span id="cb37-9" class="hljs-ln-code"><a href="#cb37-9"></a><span class="co"># Menor que</span></span>
+<span id="cb37-10" class="hljs-ln-code"><a href="#cb37-10"></a></span>
+<span id="cb37-11" class="hljs-ln-code"><a href="#cb37-11"></a><span class="co"># Menor igual que</span></span>
+<span id="cb37-12" class="hljs-ln-code"><a href="#cb37-12"></a></span>
+<span id="cb37-13" class="hljs-ln-code"><a href="#cb37-13"></a><span class="co"># Mayor que</span></span>
+<span id="cb37-14" class="hljs-ln-code"><a href="#cb37-14"></a></span>
+<span id="cb37-15" class="hljs-ln-code"><a href="#cb37-15"></a><span class="co"># Mayor igual que</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-31_0f314d6d1b938a63979f3a97f8812d17">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Relacionales.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="operadores-relacionales-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.4. Operadores relacionales</h2>
+<p>Sobre vectores de longitud mayor a 1, se aplica de modo <em>element-wise</em> elemento a elemento:</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-32_e4a5fdeae972aa61e18f7b574a66a38e">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb38-1" class="hljs-ln-code"><a href="#cb38-1"></a><span class="co"># Considerando:</span></span>
+<span id="cb38-2" class="hljs-ln-code"><a href="#cb38-2"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">39</span>, <span class="dv">85</span>)</span>
+<span id="cb38-3" class="hljs-ln-code"><a href="#cb38-3"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">39</span>, <span class="dv">85</span>)</span>
+<span id="cb38-4" class="hljs-ln-code"><a href="#cb38-4"></a></span>
+<span id="cb38-5" class="hljs-ln-code"><a href="#cb38-5"></a>vector1 <span class="sc">==</span> vector2 <span class="co"># Igual a</span></span>
+<span id="cb38-6" class="hljs-ln-code"><a href="#cb38-6"></a></span>
+<span id="cb38-7" class="hljs-ln-code"><a href="#cb38-7"></a>vector1 <span class="sc">!=</span> vector2 <span class="co"># No igual a</span></span>
+<span id="cb38-8" class="hljs-ln-code"><a href="#cb38-8"></a></span>
+<span id="cb38-9" class="hljs-ln-code"><a href="#cb38-9"></a>vector1 <span class="sc">&lt;</span> vector2 <span class="co"># Menor que</span></span>
+<span id="cb38-10" class="hljs-ln-code"><a href="#cb38-10"></a></span>
+<span id="cb38-11" class="hljs-ln-code"><a href="#cb38-11"></a>vector1 <span class="sc">&lt;=</span> vector2 <span class="co"># Menor igual que</span></span>
+<span id="cb38-12" class="hljs-ln-code"><a href="#cb38-12"></a></span>
+<span id="cb38-13" class="hljs-ln-code"><a href="#cb38-13"></a>vector1 <span class="sc">&gt;</span> vector2 <span class="co"># Mayor que</span></span>
+<span id="cb38-14" class="hljs-ln-code"><a href="#cb38-14"></a></span>
+<span id="cb38-15" class="hljs-ln-code"><a href="#cb38-15"></a>vector1 <span class="sc">&gt;=</span> vector2 <span class="co"># Mayor igual que</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-33_ad90add3e7afeded83afd91653375e6b">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Relacionales.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="operadores-lógicos" class="slide level2" data-transition="zoom-in">
+<h2>4.5. Operadores lógicos</h2>
+<p>Realiza operaciones en las que dos o más condiciones lógicas son probadas al mismo tiempo. Se utiliza principalmente para hacer filtrados en tablas:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-34_a2acbc7046dec815c8ea10de3cb93a67">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="at">.data =</span> iris,</span>
+<span id="cb39-2"><a href="#cb39-2"></a>   Petal.Length <span class="sc">&gt;</span> <span class="fl">1.6</span> <span class="sc">&amp;</span> Species <span class="sc">==</span> <span class="st">"setosa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.4         3.9          1.7         0.4  setosa
+2          5.7         3.8          1.7         0.3  setosa
+3          5.4         3.4          1.7         0.2  setosa
+4          5.1         3.3          1.7         0.5  setosa
+5          4.8         3.4          1.9         0.2  setosa
+6          5.1         3.8          1.9         0.4  setosa</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-35_211da4a2cda5697a3f299dea1911231f">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Logicos.png" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="operadores-lógicos-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.5. Operadores lógicos</h2>
+<p>Realiza operaciones en las que dos o más condiciones lógicas son probadas al mismo tiempo. Se utiliza principalmente para hacer filtrados en tablas:</p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-36_c32647deb80cddf6a1c49a409084b906">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb41-1" class="hljs-ln-code"><a href="#cb41-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="at">.data =</span> iris,</span>
+<span id="cb41-2" class="hljs-ln-code"><a href="#cb41-2"></a>    Petal.Length <span class="sc">&lt;</span> <span class="fl">1.3</span> <span class="sc">|</span> Sepal.Length <span class="sc">&lt;</span> <span class="fl">4.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          4.3         3.0          1.1         0.1  setosa
+2          5.8         4.0          1.2         0.2  setosa
+3          4.6         3.6          1.0         0.2  setosa
+4          5.0         3.2          1.2         0.2  setosa</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-37_65f6845b9d837afbf62d3c68261b36eb">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Logicos.png" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-vectores" class="slide level2" data-transition="zoom-in">
+<h2>4.6. Estructuras de datos: vectores</h2>
+<ul>
+<li>Unidimensional.</li>
+<li>Sus posiciones inician en 1.</li>
+<li>Solo puede contener datos de una sola clase (sólo números, o texto, o elementos lógicos).</li>
+<li>Se crea con la función <code>c()</code>.</li>
+</ul>
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-38_49b4134fd9f6e53b1bc8ea2fa27c2341">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Vector_Factor.png" style="height:35.0%" width="578"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Motivación: “crear un modelo lineal en R”.</strong></p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-39_e47d205618c471b6b2cf9494663e4688">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Crear un modelo lineal</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>modelo_i <span class="ot">&lt;-</span> <span class="fu">lm</span>(Petal.Length <span class="sc">~</span> Species <span class="sc">+</span> Sepal.Length, <span class="at">data =</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="estructuras-de-datos-vectores-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.6. Estructuras de datos: vectores</h2>
+<p><strong>Motivación: “crear un modelo lineal en R”.</strong></p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-40_02d641c4ce326cba339294e70ddf924c">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb44-1" class="hljs-ln-code"><a href="#cb44-1"></a><span class="co"># Crear un modelo lineal</span></span>
+<span id="cb44-2" class="hljs-ln-code"><a href="#cb44-2"></a>modelo_i <span class="ot">&lt;-</span> <span class="fu">lm</span>(Petal.Length<span class="sc">~</span> Species <span class="sc">+</span> Sepal.Length, <span class="at">data =</span> iris)</span>
+<span id="cb44-3" class="hljs-ln-code"><a href="#cb44-3"></a></span>
+<span id="cb44-4" class="hljs-ln-code"><a href="#cb44-4"></a><span class="co"># Ver el resumen estadístico del modelo</span></span>
+<span id="cb44-5" class="hljs-ln-code"><a href="#cb44-5"></a><span class="fu">summary</span>(modelo_i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Petal.Length ~ Species + Sepal.Length, data = iris)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.76390 -0.17875  0.00716  0.17461  0.79954 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       -1.70234    0.23013  -7.397 1.01e-11 ***
+Speciesversicolor  2.21014    0.07047  31.362  &lt; 2e-16 ***
+Speciesvirginica   3.09000    0.09123  33.870  &lt; 2e-16 ***
+Sepal.Length       0.63211    0.04527  13.962  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2826 on 146 degrees of freedom
+Multiple R-squared:  0.9749,    Adjusted R-squared:  0.9744 
+F-statistic:  1890 on 3 and 146 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-vectores-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.6. Estructuras de datos: vectores</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-41_1ed713cabd144642cf0b03a0ddbc1d01">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb46-1" class="hljs-ln-code"><a href="#cb46-1"></a><span class="co"># Extraer los coeficientes del modelo</span></span>
+<span id="cb46-2" class="hljs-ln-code"><a href="#cb46-2"></a>coeficientes <span class="ot">&lt;-</span> <span class="fu">coef</span>(modelo_i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="estructuras-de-datos-vectores-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.6. Estructuras de datos: vectores</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-42_25598f2cf2088fc2c179946dace25bb7">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb47-1" class="hljs-ln-code"><a href="#cb47-1"></a><span class="co"># Extraer los coeficientes del modelo</span></span>
+<span id="cb47-2" class="hljs-ln-code"><a href="#cb47-2"></a>coeficientes <span class="ot">&lt;-</span> <span class="fu">coef</span>(modelo_i)</span>
+<span id="cb47-3" class="hljs-ln-code"><a href="#cb47-3"></a></span>
+<span id="cb47-4" class="hljs-ln-code"><a href="#cb47-4"></a><span class="co"># Ver los coeficientes</span></span>
+<span id="cb47-5" class="hljs-ln-code"><a href="#cb47-5"></a>coeficientes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      (Intercept) Speciesversicolor  Speciesvirginica      Sepal.Length 
+       -1.7023422         2.2101378         3.0900021         0.6321099 </code></pre>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-vectores-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.6. Estructuras de datos: vectores</h2>
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-43_3aa23b1f44c50f21a1a60f9fe43cbdfa">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">names</span>(coeficientes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "(Intercept)"       "Speciesversicolor" "Speciesvirginica" 
+[4] "Sepal.Length"     </code></pre>
+</div>
+</div>
+<p>La forma manual de darle nombres a las posiciones de un vector es asignándole un vector de caracteres con los nombres:</p>
+</div>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-44_096ace4c67c1cc3b6dc50dd30289e293">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">names</span>(coeficientes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Nombre1"</span>, <span class="st">"Nombre2"</span>, <span class="st">"Nombre3"</span>, <span class="st">"Nombre4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-vectores-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.6. Estructuras de datos: vectores</h2>
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-45_22ab3c7368c7201e29b165901d244f7e">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">names</span>(coeficientes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Nombre1" "Nombre2" "Nombre3" "Nombre4"</code></pre>
+</div>
+</div>
+<p>Entender esto les ayudará a la interpretación de modelos, y a manejar información en R. La forma manual de darle nombres a las posiciones de un vector es asignándole un vector de caracteres con los nombres:</p>
+</div>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-46_6db32bc647104c3e900667597dea9019">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">names</span>(coeficientes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Nombre1"</span>, <span class="st">"Nombre2"</span>, <span class="st">"Nombre3"</span>, <span class="st">"Nombre4"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2"></a></span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="co"># Revisando si se aplicaron los cambios</span></span>
+<span id="cb54-4"><a href="#cb54-4"></a>coeficientes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Nombre1    Nombre2    Nombre3    Nombre4 
+-1.7023422  2.2101378  3.0900021  0.6321099 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-vectores-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.6. Estructuras de datos: vectores</h2>
+<p>¿Puedo crear más rápido un vector de nombres?</p>
+</section>
+<section id="estructuras-de-datos-vectores-7" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.6. Estructuras de datos: vectores</h2>
+<p>¡Sí!, con <strong>concatenaciones de texto</strong>.</p>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-47_b86a3078e9e1af042905995f21bd873f">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Usando paste0()</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="fu">paste0</span>(<span class="st">"Nombre"</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Nombre1"  "Nombre2"  "Nombre3"  "Nombre4"  "Nombre5"  "Nombre6" 
+ [7] "Nombre7"  "Nombre8"  "Nombre9"  "Nombre10"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-48_303773489e1738986305edb09500fdaa">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Usando paste()</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="fu">paste</span>(<span class="st">"Con espacio"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Con espacio 1"  "Con espacio 2"  "Con espacio 3"  "Con espacio 4" 
+ [5] "Con espacio 5"  "Con espacio 6"  "Con espacio 7"  "Con espacio 8" 
+ [9] "Con espacio 9"  "Con espacio 10"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-49_63f52318e11b2222fab341b4c8b139be">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># Usando paste()</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a><span class="fu">paste</span>(<span class="st">"Con espacio definido"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">sep=</span><span class="st">"____"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Con espacio definido____1" "Con espacio definido____2"
+[3] "Con espacio definido____3" "Con espacio definido____4"
+[5] "Con espacio definido____5"</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-data.frame" class="slide level2" data-transition="zoom-in">
+<h2>4.7. Estructuras de datos: data.frame</h2>
+<p>Data.frame el nombre <em>fancy</em> de una <strong>tabla</strong> (estructura de dos dimensiones: filas y columnas). Se crean con la función <code>data.frame()</code>.</p>
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-50_6b205c96c8f3d0f6958643ab2e4b65d6">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Dataframe.png" style="width:30.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-data.frame-1" class="slide level2" data-transition="zoom-in">
+<h2>4.7. Estructuras de datos: data.frame</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-51_913bd414b6bcdfa9e1406f6bb94300f4">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># Usando los vectores</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>num_1a10 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb62-3"><a href="#cb62-3"></a>ciudades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Tumbes"</span>,<span class="st">"Trujillo"</span>,<span class="st">"Chiclayo"</span>,<span class="st">"Iquitos"</span>,<span class="st">"Arequipa"</span>,</span>
+<span id="cb62-4"><a href="#cb62-4"></a>  <span class="st">"Huancayo"</span>,<span class="st">"Pucallpa"</span>,<span class="st">"Ilo"</span>,<span class="st">"Ica"</span>,<span class="st">"Tarapoto"</span>)</span>
+<span id="cb62-5"><a href="#cb62-5"></a></span>
+<span id="cb62-6"><a href="#cb62-6"></a><span class="co"># Crear la data.frame</span></span>
+<span id="cb62-7"><a href="#cb62-7"></a>Base <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Nume =</span> num_1a10, </span>
+<span id="cb62-8"><a href="#cb62-8"></a>                   <span class="at">Ciud =</span> ciudades)</span>
+<span id="cb62-9"><a href="#cb62-9"></a></span>
+<span id="cb62-10"><a href="#cb62-10"></a><span class="co"># Imprimir la base completa en la consola</span></span>
+<span id="cb62-11"><a href="#cb62-11"></a>Base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Nume     Ciud
+1     1   Tumbes
+2     2 Trujillo
+3     3 Chiclayo
+4     4  Iquitos
+5     5 Arequipa
+6     6 Huancayo
+7     7 Pucallpa
+8     8      Ilo
+9     9      Ica
+10   10 Tarapoto</code></pre>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-data.frame-2" class="slide level2" data-transition="zoom-in">
+<h2>4.7. Estructuras de datos: data.frame</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-52_99ddde3f91e148fb2665a7af76c052cf">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># Imprimir las primeras 6 filas</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">head</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Nume     Ciud
+1    1   Tumbes
+2    2 Trujillo
+3    3 Chiclayo
+4    4  Iquitos
+5    5 Arequipa
+6    6 Huancayo</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># Imprimir las últimas 6 filas</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="fu">tail</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Nume     Ciud
+5     5 Arequipa
+6     6 Huancayo
+7     7 Pucallpa
+8     8      Ilo
+9     9      Ica
+10   10 Tarapoto</code></pre>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-data.frame-3" class="slide level2" data-transition="zoom-in">
+<h2>4.7. Estructuras de datos: data.frame</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-53_c33629a3251aa4e1df0ba83d10551922">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># Número de columnas</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="fu">ncol</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># Número de filas</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="fu">nrow</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># Nombres de las columnas</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a><span class="fu">colnames</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Nume" "Ciud"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">names</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Nume" "Ciud"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># Nombres de las filas</span></span>
+<span id="cb76-2"><a href="#cb76-2"></a><span class="fu">rownames</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10"</code></pre>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-data.frame-4" class="slide level2" data-transition="zoom-in">
+<h2>4.7. Estructuras de datos: data.frame</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-54_f1150f616fc61ec7fc20586e432f4024">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="co"># Dimensiones</span></span>
+<span id="cb78-2"><a href="#cb78-2"></a><span class="fu">dim</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10  2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># Visualizar la base</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a><span class="fu">View</span>(Base)</span>
+<span id="cb80-3"><a href="#cb80-3"></a></span>
+<span id="cb80-4"><a href="#cb80-4"></a><span class="co"># Revisar la estructura</span></span>
+<span id="cb80-5"><a href="#cb80-5"></a><span class="fu">str</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   10 obs. of  2 variables:
+ $ Nume: num  1 2 3 4 5 6 7 8 9 10
+ $ Ciud: chr  "Tumbes" "Trujillo" "Chiclayo" "Iquitos" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="co"># Convertir a factor una columna de la base</span></span>
+<span id="cb82-2"><a href="#cb82-2"></a>Base<span class="sc">$</span>Ciud <span class="ot">&lt;-</span> <span class="fu">factor</span>(Base<span class="sc">$</span>Ciud)</span>
+<span id="cb82-3"><a href="#cb82-3"></a></span>
+<span id="cb82-4"><a href="#cb82-4"></a><span class="co"># Revisando el cambio</span></span>
+<span id="cb82-5"><a href="#cb82-5"></a><span class="fu">str</span>(Base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   10 obs. of  2 variables:
+ $ Nume: num  1 2 3 4 5 6 7 8 9 10
+ $ Ciud: Factor w/ 10 levels "Arequipa","Chiclayo",..: 10 9 2 6 1 3 7 5 4 8</code></pre>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-factores" class="slide level2" data-transition="zoom-in">
+<h2>4.8. Estructuras de datos: factores</h2>
+<div>
+<ul>
+<li class="fragment">Un factor es un vector de caracteres (string) donde cada elemento pertenece a una categoría. Por lo tanto, el factor es la manera en la que <strong>R entenderá que nuestra variable es categórica</strong>. Esto nos sirve para graficar, modelar y analizar los datos.</li>
+<li class="fragment">La manera de crear un factor es coerciendo un vector de caracteres.</li>
+</ul>
+</div>
+</section>
+<section id="estructuras-de-datos-factores-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">4.8. Estructuras de datos: factores</h2>
+<ul>
+<li>Un factor es un vector de caracteres (string) donde cada elemento pertenece a una categoría. Por lo tanto, el factor es la manera en la que <strong>R entenderá que nuestra variable es categórica</strong>. Esto nos sirve para graficar, modelar y analizar los datos.</li>
+<li>La manera de crear un factor es coerciendo un vector de caracteres.</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-55_b2236b70b53eed128a3fbe0ba490efe1">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb84-1" class="hljs-ln-code"><a href="#cb84-1"></a><span class="co"># Creando un vector de texto cualquiera </span></span>
+<span id="cb84-2" class="hljs-ln-code"><a href="#cb84-2"></a><span class="co"># por repetición de caracteres usando rep()</span></span>
+<span id="cb84-3" class="hljs-ln-code"><a href="#cb84-3"></a>categorias_vector <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"B"</span>,<span class="st">"D"</span>,<span class="st">"C"</span>,<span class="st">"E"</span>,<span class="st">"A"</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb84-4" class="hljs-ln-code"><a href="#cb84-4"></a></span>
+<span id="cb84-5" class="hljs-ln-code"><a href="#cb84-5"></a><span class="co"># Visualizando el contenido</span></span>
+<span id="cb84-6" class="hljs-ln-code"><a href="#cb84-6"></a>categorias_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "B" "B" "B" "B" "D" "D" "D" "D" "D" "D" "D" "D" "C" "C" "C" "C" "C" "C" "E"
+[20] "E" "E" "E" "E" "E" "E" "E" "E" "E" "A" "A" "A"</code></pre>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-factores-2" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">4.8. Estructuras de datos: factores</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-56_6711767a1095c4ed1afa7cefba3d5013">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb86-1" class="hljs-ln-code"><a href="#cb86-1"></a><span class="co"># Crear el factor a partir del vector categorias_vector</span></span>
+<span id="cb86-2" class="hljs-ln-code"><a href="#cb86-2"></a>f1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(categorias_vector)</span>
+<span id="cb86-3" class="hljs-ln-code"><a href="#cb86-3"></a></span>
+<span id="cb86-4" class="hljs-ln-code"><a href="#cb86-4"></a><span class="co"># Visualizando el contenido</span></span>
+<span id="cb86-5" class="hljs-ln-code"><a href="#cb86-5"></a>f1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] B B B B D D D D D D D D C C C C C C E E E E E E E E E E A A A
+Levels: A B C D E</code></pre>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment">Encontraremos que ahora el factor muestra sus niveles o categorías (<code>Levels</code>).</li>
+<li class="fragment">Por lo tanto, los factores son vectores de texto especiales que tienen propiedades únicas.</li>
+</ul>
+</div>
+</section>
+<section id="estructuras-de-datos-factores-3" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">4.8. Estructuras de datos: factores</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-57_b3a8c5d2472efe77198384af2106bd70">
+
+</div>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-58_8ff057a38380a79f798394405267f2b0">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="co"># Revisar los niveles de un factor</span></span>
+<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">levels</span>(f1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A" "B" "C" "D" "E"</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-59_ab1bb1f6f3f025a62bdb7c9a13487019">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="co"># Cambiar el nivel base (primer nivel) de un factor</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a><span class="fu">relevel</span>(f1, <span class="at">ref =</span> <span class="st">"D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] B B B B D D D D D D D D C C C C C C E E E E E E E E E E A A A
+Levels: D A B C E</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_9e86e4a09359313cf1293587349087db">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Cambiar el orden de los niveles a mano</span></span>
+<span id="cb92-2"><a href="#cb92-2"></a>forcats<span class="sc">::</span><span class="fu">fct_relevel</span>(f1, <span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"C"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] B B B B D D D D D D D D C C C C C C E E E E E E E E E E A A A
+Levels: D E C A B</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-factores-4" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">4.8. Estructuras de datos: factores</h2>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_2d2aa40845570549aa4f57efe57cfcbe">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="co"># Contar cuántas observaciones hay por nivel</span></span>
+<span id="cb94-2"><a href="#cb94-2"></a>forcats<span class="sc">::</span><span class="fu">fct_count</span>(f1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  f         n
+  &lt;fct&gt; &lt;int&gt;
+1 A         3
+2 B         4
+3 C         6
+4 D         8
+5 E        10</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_0ccae8ee5277727b57988aae59d14107">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="co"># Cambiar los niveles que </span></span>
+<span id="cb96-2"><a href="#cb96-2"></a><span class="co"># no son de interés por una etiqueta única</span></span>
+<span id="cb96-3"><a href="#cb96-3"></a>forcats<span class="sc">::</span><span class="fu">fct_other</span>(f1, <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"C"</span>,<span class="st">"E"</span>), <span class="at">other_level =</span> <span class="st">"Otros"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Otros Otros Otros Otros Otros Otros Otros Otros Otros Otros Otros Otros
+[13] C     C     C     C     C     C     E     E     E     E     E     E    
+[25] E     E     E     E     A     A     A    
+Levels: A C E Otros</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-factores-5" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">4.8. Estructuras de datos: factores</h2>
+<div class="fragment fade-up">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-63_52ab00fd4f61da7cf5f10fc6f50d6614">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb98-1" class="hljs-ln-code"><a href="#cb98-1"></a><span class="co"># Cambiar el nombre de uno más niveles</span></span>
+<span id="cb98-2" class="hljs-ln-code"><a href="#cb98-2"></a>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(f1, </span>
+<span id="cb98-3" class="hljs-ln-code"><a href="#cb98-3"></a>                    <span class="st">"Amazonas"</span> <span class="ot">=</span> <span class="st">"A"</span>,</span>
+<span id="cb98-4" class="hljs-ln-code"><a href="#cb98-4"></a>                    <span class="st">"Ecuador"</span> <span class="ot">=</span> <span class="st">"E"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] B        B        B        B        D        D        D        D       
+ [9] D        D        D        D        C        C        C        C       
+[17] C        C        Ecuador  Ecuador  Ecuador  Ecuador  Ecuador  Ecuador 
+[25] Ecuador  Ecuador  Ecuador  Ecuador  Amazonas Amazonas Amazonas
+Levels: Amazonas B C D Ecuador</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-factores-6" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">4.8. Estructuras de datos: factores</h2>
+<p>También se puede cambiar el orden de un factor en base a otra variable</p>
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-64_c3e321d4463f666690ba82ceaddbd3c1">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb100-1" class="hljs-ln-code"><a href="#cb100-1"></a><span class="do">##   Comencemos con un ejemplo de boxplot</span></span>
+<span id="cb100-2" class="hljs-ln-code"><a href="#cb100-2"></a><span class="do">##   donde el orden del factor Species es alfabético</span></span>
+<span id="cb100-3" class="hljs-ln-code"><a href="#cb100-3"></a><span class="fu">boxplot</span>(Sepal.Width <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-64-1.png" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-65_d439ada9ca33c6b271079afae4cbd97d">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a><span class="do">## Aplicando el reordenamiento con fct_reorder(). Calcula un</span></span>
+<span id="cb101-2"><a href="#cb101-2"></a><span class="do">## estadístico (median) de una columna de datos numérica (Sepal.Width)</span></span>
+<span id="cb101-3"><a href="#cb101-3"></a><span class="do">## por grupo (Species) de manera descendente (.desc = TRUE)</span></span>
+<span id="cb101-4"><a href="#cb101-4"></a>SP_Reordenada <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(iris<span class="sc">$</span>Species, <span class="at">.x =</span> iris<span class="sc">$</span>Sepal.Width, </span>
+<span id="cb101-5"><a href="#cb101-5"></a>                                      <span class="at">.fun =</span> median, <span class="at">.desc =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb101-6"><a href="#cb101-6"></a></span>
+<span id="cb101-7"><a href="#cb101-7"></a><span class="fu">boxplot</span>(Sepal.Width <span class="sc">~</span> SP_Reordenada, <span class="at">data =</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-65-1.png" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-de-datos-listas" class="slide level2" data-transition="zoom-in">
+<h2>4.9. Estructuras de datos: listas</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p>Las listas son estructuras que almacenan cualquier otro tipo de estructuras de datos (matrices, vectores, factores, etc.), incluso pueden almacenar otras listas.</p>
+</div><div class="column" style="width:75%;">
+<div class="cell" data-layout-align="center" data-hash="index_cache/revealjs/unnamed-chunk-66_4e72eeb4e860434ac40be6c1920face1">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/02_Estructuras_datos_libro.png" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="recapitulación-de-indexación" class="slide level2" data-transition="zoom-in">
+<h2>4.10. Recapitulación de indexación</h2>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<ul>
+<li>Utiliza <code>[]</code> para indexar vectores y factores.</li>
+</ul>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<ul>
+<li>Utiliza <code>[fila, columna]</code> para indexar bases de datos bidimensionales: data.frame y tibbles.</li>
+</ul>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<ul>
+<li>Utiliza <code>$</code> para indexar una columna entera de una data.frame o tible.</li>
+<li>Además, <code>$</code> sirve para indexar cualquier posición de una lista nombrada.</li>
+</ul>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="fragment semi-fade-out">
+<ul>
+<li>Utiliza <code>[[]]</code> para indexar listas no nombradas.</li>
+</ul>
+</div>
+</div>
+</section></section>
+<section id="fin" class="title-slide slide level1 center1 center">
+<h1>Fin</h1>
+<p><img src="figs/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>Fundamentos de R</p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-fullscreen/fullscreen.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"chalkEffect":0.4,"boardmarkerWidth":3,"chalkWidth":4.4},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, RevealFullscreen, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>

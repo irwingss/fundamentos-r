@@ -1,0 +1,193 @@
+---
+title: "Laboratorio 1"
+subtitle: "Curso: Fundamentos de programación con R"
+author: "Irwing S. Saldaña"
+format:
+  html:
+    dpi: 600
+    smooth-scroll: true
+    search: false
+    code-summary: "Mostrar el código"
+    code-fold: true
+    code-overflow: wrap
+    code-block-bg: true
+    code-block-border-left: "#5000ef"
+    linkcolor: "#5000ef"
+    highlight-style: ayu
+    code-link: true
+    code-copy: true
+    language: esp
+    toc-location: left
+    toc-depth: 3
+    toc-title: "Contenidos"
+    number-sections: true
+editor: visual
+---
+
+# Algoritmos y Pseudocódigo
+
+Pon en práctica la creación de algoritmos empleando pseudocódigo con los siguientes ejercicios. Intenta resolverlos sin revisar el resultado. Una vez que hiciste tu mejor esfuerzo por resolver cada ejercicio, revisa el resultado correcto haciendo clic en **"Mostrar el código"** debajo de cada ejercicio.
+
+## Identificar un número par
+
+::: columns
+::: column
+En la sección *R como calculadora (módulo ¡Comencemos!)*, se mostró que al utilizar el símbolo `%%` en una división, el resultado impreso en consola era el residuo de la misma.
+
+Aplica lo visto en la sección de *Pseudocódigo* para crear uno que te permita responder la pregunta ¿el número N es par?:
+:::
+
+::: column
+```{r, fig.align='center', out.width="80%"}
+#| echo: false
+knitr::include_graphics("figs/01_Lab_Alg1.png", dpi = 600)
+
+```
+:::
+:::
+
+```{r}
+# Código en modo 1 (básico): ------------------- -
+# Iniciar
+# Recibir: N
+# Evaluar: si el residuo de  N/2 es igual a 0, entonces imprimir "es par", si es diferente de 0, imprimir es impar
+# Fin
+
+# Código en modo 2 (avanzado): ------------------- -
+# Iniciar
+# Recibir: N
+# if N %% 2 == 0
+# | print("es par")
+# | else 
+# | | print("es impar")
+# Fin
+```
+
+## Contabilizar las Guaninas en una secuencia de ADN
+
+::: columns
+::: column
+El ADN contiene 4 tipo de bases nitrogenadas: guaninas (G), timinas (T), adeninas (A), citocinas (C). Una secuencia de ADN, en consecuencia, estará compuesta por cadenas de estas cuatro moléculas (letras).
+
+Crea un **algoritmo que contabilice las guaninas (G)** de una cadena de ADN.
+:::
+
+::: column
+```{r, fig.align='center', out.width="80%"}
+#| echo: false
+knitr::include_graphics("figs/01_Lab_Alg2.png", dpi = 600)
+
+```
+:::
+:::
+
+```{r}
+# Código en modo 1 (básico): ------------------- -
+# Iniciar
+# Recibir: Cadena_ADN
+# Crear: un objeto "CONTEO" vacío que reciba el conteo de G.
+# Evaluar: elemento por elemento si es o no es G. Sumar el valor 1 al objeto "CONTEO" cada vez que encuentra una G en la secuencia. Hacer esto hasta el último elemento de la secuencia.
+# Mostrar: el valor de "CONTEO"
+# Finalizar
+
+# Código en modo 2 (avanzado): ------------------- -
+# Iniciar
+# Recibir: Cadena_ADN
+# Probar el siguiente if elemento a elemento
+#  |  if (elemento == "G") 
+#  |   |  CONTEO = CONTEO + 1
+#  |   else 
+#  |   | CONTEO = CONTEO
+# Imprimir valor: "CONTEO"
+# Finalizar
+```
+
+## Función para hacer EDA (Exploratory Data Analysis)
+
+::: columns
+::: column
+Un análisis de exploración de datos (EDA, siglas en inglés) es un procedimiento para inspeccionar la naturaleza y estadísticos descriptivos de cada columna en una base de datos (tabla). Estos análisis pueden ser univariados (describiendo estadísticamente columna por columna), o bivariados (describiendo la relación entre pares de columnas).
+
+Nos enfocaremos en EDA univariado. Una forma sencilla de realizarlo es aplicar gráficas estadísticas descriptivas dependiendo del tipo de variable que aloja una columna dada. Para una **columna cuyos datos sea numéricos**, se preferirá realizar un *gráfico de función de densidad* para visualizar la distribución de los mismos. Para una **columna con datos categóricos**, se realizará un **gráfico de barras**.
+
+Crea el pseudocódigo de un algoritmo que ayude a realizar una gráfica por columna, dependiendo de su tipo.
+:::
+
+::: column
+```{r, fig.align='center', out.width="80%"}
+#| echo: false
+knitr::include_graphics("figs/01_Lab_Alg3.png", dpi = 600)
+
+```
+:::
+:::
+
+```{r}
+# Código en modo 1 (básico): ------------------- -
+# Iniciar
+# Recibir: Base de datos
+# Crear: un objeto vacío "LISTA" que almacene los gráficos resultantes
+# Evaluar: columna por columna la siguiente condición:
+# Si una columna es numérica, hacer gráfico de función de densidad; 
+# Si una columna es categórica, hacer gráfico de barras.
+# Colocar el gráfico resultante dentro del objeto "LISTA".
+# Mostrar: todos los gráficos del objeto LISTA.
+# Finalizar
+
+# Código en modo 2 (avanzado): ------------------- -
+# Iniciar
+# Recibir: Base de datos
+# Probar el siguiente if columnas por columna
+#  |  if (columna es numérica) 
+#  |   |  Graficar: función de densidad
+#  |   |  Almacenar: el gráfico en LISTA
+#  |   else if (columna es categórica) 
+#  |         |  Graficar: función de densidad
+#  |         |  Almacenar: el gráfico en LISTA
+# Imprimir: todos los gráficos del objeto LISTA.
+# Finalizar
+```
+
+## Identificar un número par
+
+::: columns
+::: column
+En la sección *R como calculadora (módulo ¡Comencemos!)*, se mostró que al utilizar el símbolo `%%` en una división, el resultado impreso en consola era el residuo de la misma.
+
+Aplica lo visto en la sección de *Pseudocódigo* para crear uno que te permita responder la pregunta ¿el número N es par?:
+:::
+
+::: column
+```{r, fig.align='center', out.width="80%"}
+#| echo: false
+knitr::include_graphics("figs/01_Lab_Alg1.png", dpi = 600)
+
+```
+:::
+:::
+
+```{r}
+# Código en modo 1 (básico): ------------------- -
+# Iniciar
+# Recibir: N
+# Evaluar: si el residuo de  N/2 es igual a 0, entonces imprimir "es par", si es diferente de 0, imprimir es impar
+# Fin
+
+# Código en modo 2 (avanzado): ------------------- -
+# Iniciar
+# Recibir: N
+# if N %% 2 == 0
+# | print("es par")
+# | else 
+# | | print("es impar")
+# Fin
+```
+
+# Nota adicional
+
+Como habrás notado en las respuestas ofrecidas en este laboratorio, se suele trabajar creando **objetos vacíos** que almacenen los resultados (por ejemplo: cuarta línea en la respuesta de los pseudocódigos 1.2 y 1.3). Recuerda que estás lidiando con información, y esta debe estar guardada de alguna manera y bajo alguna estructura de datos en nuestra computadora. En el siguiente módulo aprenderás sobre **estructuras de datos** para completar la ecuación:
+
+$$
+\text{Algoritmos} + \text{Estructuras de datos} = \text{Programas}
+$$
+

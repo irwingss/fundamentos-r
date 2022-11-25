@@ -1,0 +1,510 @@
+---
+title: "Fundamentos de <br>programación con R"
+subtitle: "Track: Estadística y programación con R"
+author: "Irwing S. Saldaña"
+format: 
+  revealjs:
+    revealjs-plugins:
+     - fullscreen
+    touch: true
+    auto-stretch: false 
+    incremental: false
+    smaller: true
+    scrollable: true
+    theme: mytheme.scss
+    transition: none
+    background-transition: none
+    logo: figs/logo.png
+    chalkboard:
+      chalk-effect: 0.4
+      boardmarker-width: 3
+      chalk-width: 4.4
+      buttons: true
+    footer: "Fundamentos de R"
+execute:
+  cache: false
+editor: source
+title-slide-attributes:
+    data-background-image: "figs/FondoPrincipal.jpg"
+    data-background-size: cover
+    data-background-opacity: "number"
+---
+
+##  {background-image="figs/fondo.jpg"}
+
+<br> <br>
+
+<center><img src="figs/aboutme.png" alt="Mi fotografía" width="300" height="300"/></center>
+
+<br>
+
+<center>
+
+[MSc(c) Blgo. Irwing S. Saldaña]{style="color: #ffffff;font-size:1em;font-weight: bold;"}<br>
+
+<center>[Profesor<br>ILCID - masterX (Perú)]{style="color: #ffffff; font-weight: ligther;"}</center>
+
+# Bienvenidos {transition="zoom-in"}
+
+Con este curso:
+
+::: incremental
+-   Tendrás tu primer contacto con la programación orientada a ciencias.
+-   Aprenderás la sintaxis básica de R.
+-   Crearás funciones y aprenderás sobre ciclos.
+-   Harás tus primeros gráficos con ggplot2.
+-   Al final, crearás una función para análisis exploratorio con R.
+:::
+
+## 
+
+Este será tu primer paso con R, un lenguaje de programación con un gran soporte de la comunidad de desarrollo, y una excelente IDE (RStudio):
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics("figs/01_RStudio.jpg")
+```
+
+## 
+
+Además, de la mejor herramienta de graficación estadística actual, la librería ggplot2:
+
+```{r, out.width="100%", fig.align='center', out.width="80%"}
+knitr::include_graphics("figs/mejorqueboxplot.png")
+```
+
+# 
+
+::: columns
+::: column
+<br> <a href="https://www.masterx.org/collections">[¡Felicitaciones por tu inicio!]{style="font-size:1.6em;font-weight:bold; color:#4e00ff;"}</a><br><a href="https://www.masterx.org/collections" style="font-size:0.8em; color:#000000;">Este es el <strong>primer curso</strong> del track que he diseñado para que aprendas R y lo apliques a análisis estadístico básico, multivariado y modelos más complejos (GLM, efectos mixtos)</a>
+:::
+
+::: column
+<a href="https://www.masterx.org/collections">
+
+```{r, out.width="80%", fig.align='center'}
+knitr::include_graphics(path = "figs/calendario.png", dpi = 600)
+```
+
+</a>
+:::
+:::
+
+# Iniciando con R y RStudio
+
+<h2 style="color:#696969;">
+
+Clase 1
+
+</h2>
+
+# Sección 1. Instalación de R, <br>RStudio y utilitarios {background-image="figs/00_Background_Section.png"}
+
+## 1.1. Instalación de R {transition="zoom-in"}
+
+-   Busca en Google el término **"R project"** y el sistema operativo de interés, como: **"R project MacOs"**. En las siguientes diapositivas encontrarán los enlaces directos.
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics(path = "figs/01_windows_search.jpg", dpi = 600)
+```
+
+## Instalación de R en Windows
+
+-   Siempre que necesites, podrás ingresar a este link <https://cran.r-project.org/bin/windows/base/> para ver la versión más reciente de R para Windows.
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics(path = "figs/01_windows_CRAN.jpg",dpi = 600)
+```
+
+## Instalación de Rtools (solo Windows)
+
+-   Este utilitario es un **compilador**, y es indispensable para instalación en Windows. Encontrarás las últimas versiones aquí <https://cran.r-project.org/bin/windows/Rtools/>. Asegúrate de instalar la versión más reciente.
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics("figs/01_Rtools.jpg")
+```
+
+## Instalación de R en macOS
+
+-   En macOS, este link te mostrará siempre la versión más reciente con extensión .pkg <https://cran.r-project.org/bin/macosx/>.
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics(path = "figs/01_macos_CRAN.jpg",dpi = 600)
+```
+
+## Instalación de XQuartz (solo macOS)
+
+-   Este utilitario es un **compilador** que ya viene instalado en las últimas versiones de macOS, pero es bueno instalarlo por si no está en el sistema. Instala la última versión aquí <https://cran.r-project.org/bin/windows/Rtools/>.
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics("figs/01_xquartz.jpg",dpi = 600)
+```
+
+## Instalación de R en Ubuntu (Linux)
+
+-   Ejecuta los siguientes códigos en la terminal de comandos de Ubuntu:
+
+::: columns
+::: {.column width="40%"}
+Actualizar el índice de paquetes
+
+```{r, echo=TRUE, eval=FALSE}
+$ sudo apt update
+```
+
+Instalar R (versión más reciente)
+
+```{r, echo=TRUE, eval=FALSE}
+$ sudo apt install r-base
+```
+
+Revisar la versión para corroborar la instalación
+
+```{r, echo=TRUE, eval=FALSE}
+$ R --version
+```
+:::
+
+::: {.column width="60%"}
+```{r, out.width="80%", fig.align='center'}
+knitr::include_graphics("figs/01_ubuntu_terminal.jpg",dpi = 600)
+```
+:::
+:::
+
+## 1.2. Instalación de RStudio (todos los Sistemas Operativos) {transition="zoom-in"}
+
+-   Existe un único link <https://www.rstudio.com/products/rstudio/download/#download> para descargar la última versión de RStudio.
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics("figs/01_rstudio_all_installers.jpg",dpi = 600)
+```
+
+# Sección 2. Primer contacto con R {background-image="figs/00_Background_Section.png"}
+
+## 2.1. Cómo ejecutar código {transition="zoom-in"}
+
+-   La ejecución de código en R se hace presionando en el teclado `control + enter` (Windows/Ubuntu) o `command + enter` (macOS).
+
+```{r, echo=TRUE}
+head(iris)
+```
+
+## 2.2. R como una calculadora {transition="zoom-in"}
+
+-   R nos permite realizar operaciones matemáticas con código. La cosa más sencilla para hacer en R es sumar.
+
+```{r, echo=TRUE, eval=FALSE}
+2500 + 123
+```
+
+<br>
+
+::: columns
+::: {.column width="75%"}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+openxlsx::read.xlsx("bases/tabla1.xlsx") |> 
+   knitr::kable(format = "pandoc", 
+         caption = 'Operaciones y símbolos aritméticos en R')
+```
+:::
+
+::: {.column width="25%"}
+<br>
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("figs/01_calculadora.png", dpi=600)
+```
+:::
+:::
+
+## 2.3. Comentar código {transition="zoom-in"}
+
+-   Cuando escribas código en R, podrás dejar comentarios con el símbolo `#`.
+-   Todo aquello escrito a la derecha de `#` no será interpretado por R.
+
+```{r, echo=TRUE, eval=FALSE}
+# Este es un comentario en una sola línea
+2500 + 123
+
+# Este es un comentario en 
+# en varias líneas de código.
+# Cada línea lleva su propio #
+2500 + 123
+
+2500 + 123 # Este es un comentario al costado de un código ejecutable
+
+```
+
+# Sección 3. Fundamentos de programación {background-image="figs/00_Background_Section.png"}
+
+## 3.1. Representación de la información {transition="zoom-in"}
+
+-   **Caracteres alfabéticos**: letras mayúsculas y minúsculas del alfabeto inglés.
+
+```{r, echo=TRUE, eval=FALSE}
+A, b, C, d, ..., Z
+```
+
+-   **Caracteres numéricos**: dígitos del sistema de numeración decimal.
+
+```{r, echo=TRUE, eval=FALSE}
+0, 1, 2, 3, ..., 9
+```
+
+-   **Caracteres especiales**: símbolos matemáticos y ortográficos adicionales.
+
+```{r, echo=TRUE, eval=FALSE}
+{}, [], $, !, ?, ..., #
+```
+
+## ASCII
+
+Los símbolos mostrados se almacenan en forma de bits utilizando una codificación.
+
+-   **Código ASCII** (*American Standard Code for Information Interchange*): usa 7 bits $2^7 = 128$ caracteres diferentes. Aunque ya se ha extendido a 8 bits = 256 caracteres, para incluir símbolos en español.
+
+
+```{r, fig.align='center', out.width="60%"}
+knitr::include_graphics("figs/01_ASCII.jpg", dpi=600)
+```
+
+## Encoding UTF-8
+
+::::{.columns}
+::: {.column width="60%"}
+-   **Código Unicode**: utiliza 16 bits $2^{16} = 65536$ símbolos, para incluir caracteres de idiomas como chino, japonés, árabe, etc. <br> <br> Una forma de codificación unicode es **UTF-8** (*8-bit Unicode Transformation Format*). Para que funcionen caracteres en español en sus archivos generados en RStudio, hay que especificar que se utilice UTF-8.
+:::
+
+::: {.column width="40%"}
+<br> <br> <br>
+
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("figs/01_Binary.png", dpi=600)
+```
+:::
+::::
+
+## Valores numéricos interpretados por R
+
+-   **Números enteros**: números sin decimales.
+
+```{r, echo=TRUE, eval=FALSE}
+1, 2, 3, 4, ..., 10000
+```
+
+-   **Números reales**: números con decimales.
+
+```{r, echo=TRUE, eval=FALSE}
+1.65, 2.36, 3.99, ..., 900.87
+```
+
+-   **Números reales como notación científica**: para decimales pequeños, R activa la opción `options(scipen = 1)` que los convierte en números con notación científica. El número `1.99e-4` equivale a $1.99\times10^{-4}$ o $0.000119$. Para que se deje de mostrar notación científica, se debe desactivar la opción con `options(scipen = 999)`.
+
+```{r, echo=TRUE, eval=FALSE}
+1.16e-1, 5.74e-2, ..., 2.2e-16
+```
+
+## Valores boleanos y especiales interpretados por R
+
+Los símbolos de verdadero y falso son fundamentales en R. Estos son resultado de operaciones lógicas (veremos ello más adelante).
+
+::: columns
+::: {.column width="40%"}
+-   `TRUE`: verdadero, equivalente al valor numérico de 1.
+-   `FALSE`: falso, equivalente al valor numérico de 0.
+-   `NULL`: como símbolo que representa el vacío o ausencia de información.
+-   `NA`: valores perdidos (celdas en blanco en una tabla).
+:::
+
+::: {.column width="60%"}
+<br>
+
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("figs/01_TRUE_FALSE.png", dpi=600)
+```
+:::
+:::
+
+## Valores de texto interpretados por R
+
+Cualquier carácter colocado entre comillas simples `'texto'` o dobles `"texto"` será interpredado por R como verdadero texto, y no será ejecutado como una órden.
+
+```{r, echo=TRUE}
+# Este comando sí se ejecuta
+head(iris)
+
+# Este comando no se ejecuta
+# porque se interpreta como texto
+"head(iris)"
+```
+
+## 3.2. Concepto de algoritmo {transition="zoom-in"}
+
+Un algoritmo es un método para resolver un problema. Es la serie de instrucciones para obtener un resultado.
+
+$$\text{Algoritmos} + \text{Estructuras de datos} = \text{Programas}$$
+
+### Algoritmo para crear algoritmos efectivos:
+
+:::: columns
+::: {.column width="40%"}
+-   **Diseño de un algoritmo**: secuencia de órdenes no ambiguas y claras.
+-   **Codificación del algoritmo**: crear el código en el lenguaje preferido (R).
+-   **Ejecución y validación**: revisión del resultado del algoritmo.
+:::
+
+::: {.column width="60%"}
+```{r, fig.align='center', out.width="40%"}
+knitr::include_graphics("figs/01_algoritmo.png", dpi=600)
+```
+:::
+::::
+
+## Paso 1: Diseño de algoritmos con pseudocódigo
+
+:::: columns
+::: {.column width="50%"}
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("figs/01_algoritmos_pseudo1.png", dpi=600)
+```
+:::
+
+::: {.column width="50%"}
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("figs/01_algoritmos_pseudo2.png", dpi=600)
+```
+:::
+::::
+
+## Paso 1: Diseño de algoritmos con pseudocódigo
+
+```{r, fig.align='center', out.width="55%"}
+knitr::include_graphics("figs/01_algoritmos_pseudo3.png", dpi=600)
+```
+
+## Paso 2: Codificación del algoritmo
+
+<br>
+
+```{r, echo=TRUE}
+alg_PCA <- function(base, grupo=NULL) {
+  # Librerías
+  require(tidyverse)
+  require(factoextra)
+
+  # Primer if else: testeo base numérica
+  if (all(apply(base, 2, is.numeric))) {
+    base1 <- base
+  } else if (!all(apply(base, 2, is.numeric))) {
+    base1 <- base %>% select_if(is.numeric)
+  }
+
+  # Decisión del investigador para estandarizar
+  desvest <- apply(base1, 2, sd)
+  print(desvest)
+
+  respuesta <- readline(prompt = "Ingresa 1 para estandarizar la base, 2 para no estandarizar: ")
+
+  # Segundo if else: estandarización del PCA
+  # basado en respuesta del investigador
+  if (respuesta == 1) {
+    PCA <- prcomp(base1, scale = TRUE)
+    print(PCA)
+    cat("Revisión de la varianza explicada por cada componente principal","\n")
+    print(summary(PCA))
+    print(fviz_pca_biplot(PCA,col.var = "black",
+                          habillage = grupo, 
+                          addEllipses = TRUE, repel = TRUE))
+
+  } else if (respuesta == 2) {
+    PCA <- prcomp(base1, scale = FALSE)
+    cat("Revisión de la varianza explicada por cada componente principal","\n")
+    print(summary(PCA))
+    print(fviz_pca_biplot(PCA,col.var = "black",
+                          habillage = grupo, 
+                          addEllipses = TRUE, repel = TRUE))
+  }
+}
+```
+
+## Paso 3: Ejecución y validación
+
+```{r, echo=TRUE}
+alg_PCA(iris)
+```
+
+## Paso 3: Ejecución y validación
+
+```{r, echo=FALSE, eval=TRUE}
+alg_PCA2 <- function(base, grupo=NULL) {
+  # Librerías
+  require(tidyverse)
+  require(factoextra)
+
+  # Primer if else: testeo base numérica
+  if (all(apply(base, 2, is.numeric))) {
+    base1 <- base
+  } else if (!all(apply(base, 2, is.numeric))) {
+    base1 <- base %>% select_if(is.numeric)
+  }
+
+  # Decisión del investigador para estandarizar
+  desvest <- apply(base1, 2, sd)
+
+    respuesta <- 1
+
+  # Segundo if else: estandarización del PCA
+  # basado en respuesta del investigador
+  if (respuesta == 1) {
+    PCA <- prcomp(base1, scale = TRUE)
+    cat("Revisión de la varianza explicada por cada componente principal","\n")
+    print(summary(PCA))
+    print(fviz_pca_biplot(PCA,col.var = "black",
+                          habillage = grupo, 
+                          addEllipses = TRUE, repel = TRUE))
+  } else if (respuesta == 2) {
+    PCA <- prcomp(base1, scale = FALSE)
+    cat("Revisión de la varianza explicada por cada componente principal","\n")
+    print(summary(PCA))
+    print(fviz_pca_biplot(PCA,col.var = "black",
+                          habillage = grupo, 
+                          addEllipses = TRUE, repel = TRUE))
+  }
+}
+```
+
+```{r, echo=FALSE, fig.align='center', out.width="80%"}
+alg_PCA2(iris, grupo=iris$Species)
+```
+
+## 3.3. Lenguajes de programación {transition="zoom-in"}
+
+En el **paso de codificación del algoritmo**, se utilizan lenguajes de programación para comunicarse con la computadora. Existen:
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("figs/01_lenguajes_alto_bajo.png", dpi=600)
+```
+
+## Lenguajes más frecuentes en ciencias
+
+```{r, fig.align='center', out.width="90%"}
+knitr::include_graphics("figs/01_programming_languages_science.png", dpi=600)
+```
+
+## {#nature-1 data-menu-title="Nature article python-based"}
+
+[Link Nature](https://www.nature.com/articles/s41587-021-00985-6)
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("figs/01_seq_programming_language.png", dpi=600)
+```
+
+## {#nature-2 data-menu-title="Nature article python-based"}
+
+
+```{r, fig.align='center', out.width="78%"}
+knitr::include_graphics("figs/01_seq_programming_language_image.png", dpi=600)
+```
+
+# Fin {.center1}

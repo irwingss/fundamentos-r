@@ -1,0 +1,223 @@
+/*-- scss:defaults --*/
+
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+// fonts
+$font-family-sans-serif: Lato, sans-serif !default;
+
+// colors
+$body-bg: #fff !default;
+$body-color: #2d2d2d !default;
+$link-color: #4e00ff !default;
+$link-color-hover: #ff4800;
+$selection-bg: rgba(0, 0, 0, 0.99);
+
+// headings
+$presentation-heading-font: "News Cycle", sans-serif !default;
+$presentation-heading-color: #4e00ff;
+$code-block-bg: #e8faff;
+$code-block-border-color: #04a0cd;
+$code-block-font-size: 22px;
+$code-bg:#e8faff;
+$tabset-border-color:#04a0cd;
+$presentation-h1-font-size: 2em;
+$presentation-h2-font-size: 1.4em;
+$presentation-h3-font-size: 1.2em;
+$presentation-h4-font-size: 1em;
+
+
+/*Modificar las listas*/
+.reveal .slide ul li, .reveal .slide ol li {
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
+    font-size: 1.3em;
+}
+
+/*Modificar todos los párrafos*/
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 1.3em;
+}
+
+/*Modificar el pie de diapositiva*/
+.reveal .footer > * {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.9em;
+}
+
+/*Modificar el título subtítulo*/
+#title-slide .title {
+    text-align: left;
+    font-size: 2.9em;
+    font-weight: bold;
+}
+
+#title-slide .subtitle {
+    font-weight: regular;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+/*Modificar el autor*/
+#title-slide .author {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+
+
+/* Modificar colores del codigo*/
+code span.co {
+    color: #a9a9a9;
+}
+
+code span.do {
+    color: #7c9eae;
+    font-style: italic;
+}
+
+code span.fu {
+    color: #1875f2;
+}
+
+code span.st {
+    color: #22a800;
+}
+
+code span.dv {
+    color: #ff900b;
+}
+
+code span.fl {
+    color: #ff900b;
+}
+
+code span.sc {
+    color: #8a00e6;
+}
+
+code span.cn {
+    color: #8a00e6;
+}
+
+code span.ot {
+    color: #8a00e6;
+}
+
+code span.er {
+    color: #8a00e6;
+}
+
+code span.at {
+    color: #000000;
+}
+
+pre > code.sourceCode > span {
+    color: #000000;
+}
+
+.reveal code {
+    color: #1875f2;
+    background-color: #e8faff;
+    white-space: pre-wrap;
+}
+
+.reveal div.sourceCode {
+    color: #003b4f;
+    background-color: #f1f3f5;
+    margin-bottom: 10px !important;
+}
+
+/*Adicionales*/
+
+.center1 h1 {
+  text-align: center;
+}
+
+/*Diseño adaptivo*/
+
+@media only screen and (max-width: 768px) {
+
+.reveal code {
+    font-size: 27px;
+}
+
+  /*Modificar el título subtítulo*/
+#title-slide .title {
+    text-align: left;
+    font-size: 120px;
+    font-weight: bold;
+}
+
+#title-slide .subtitle {
+    font-weight: lighter;
+    font-size: 50px;
+    text-align: left;
+}
+
+/*Modificar el autor*/
+#title-slide .author {
+    font-size: 50px;
+    font-weight: lighter;
+    text-align: left;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 40px;
+}
+
+.reveal .slide ul li, .reveal .slide ol li {
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
+    font-size: 40px;
+}
+
+.reveal.smaller .slides section, .reveal .slides section.smaller, .reveal .slides section .callout {
+    font-size: 0.8 em;
+}
+
+.reveal.smaller .slides h1, .reveal .slides section.smaller h1 {
+    font-size: 85px;
+}
+
+.reveal.smaller .slides h2, .reveal .slides section.smaller h2 {
+    font-size: 1em;
+}
+
+.reveal.smaller .slides h3, .reveal .slides section.smaller h3 {
+    font-size: 70px;
+}
+
+.reveal.smaller .slides h4, .reveal .slides section.smaller h4 {
+    font-size: 60px;
+}
+
+/*Modificar el pie de diapositiva*/
+.reveal .footer > * {
+    text-align: center;
+}
+
+/* modificar el fondo en diapos con fondo en dispositivos moviles*/
+.reveal .slide-background-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: 70% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+}

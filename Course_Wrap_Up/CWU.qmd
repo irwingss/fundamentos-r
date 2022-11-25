@@ -1,0 +1,200 @@
+---
+title: "Fundamentos de <br>programación con R"
+subtitle: "Track: Estadística y programación con R<br>2022-3"
+author: "Irwing S. Saldaña"
+format: 
+  revealjs:
+    incremental: false
+    smaller: true
+    scrollable: true
+    theme: mytheme.scss
+    transition: slide
+    background-transition: fade
+    logo: logo.png
+    chalkboard:
+      chalk-effect: 0.4
+      boardmarker-width: 3
+      chalk-width: 4.4
+      buttons: true
+    footer: "Fundamentos de R"
+execute:
+  cache: true
+editor: visual
+title-slide-attributes:
+    data-background-image: "figs/FondoPrincipal.jpg"
+    data-background-size: cover
+    data-background-opacity: "number"
+editor_options: 
+  chunk_output_type: console
+---
+# Course wrap up
+
+## Crear una función que aplique EDA sobre una base de datos
+
+## Fase 1: diseño del algoritmo:
+
+- Función que evalue cada columna y vea de que tipo eso.
+- A las funciones de tipo numérica les aplicará un gráfico de densidad
+- a las funciones de tipo factor les aplicará un gráfico de barras
+
+
+## Fase 2: pseudocódigo
+
+```{r}
+EDA <- function(datos){
+  # Activación de librerías necesarias
+  
+  ### Estructura de un loop for --------------------- -
+  ##   
+  #     1. Espacio de almacenamiento de gráficos (lista)
+  #
+  ##    2. Producción de gráficos con loop for y
+  #        condicionales if y else
+  #
+  #         # for i en número de columnas
+  #
+  #           if (columna clase numerica) {}
+  #           else if(columna clase factor) {}
+  ### ------------------------------------------------ -
+
+  # Agrupar los gráficos para plotearlos juntos
+  
+  # Imprimir gráficos juntos
+}
+```
+
+## Fase 3: Código de la función EDA
+
+```{r}
+library(tidyverse)
+
+EDA <- function(base, grupo = NULL,
+                colores = ggthemes::scale_color_tableau(),
+                rellenados = ggthemes::scale_fill_tableau()) {
+  
+  # Activación de librerías necesarias 
+  require(tidyverse)
+  require(ggpubr)
+  
+  # Estructura de un loop for --------------------- -
+  # 1. Almacenamiento de gráficos
+  lista <- list()
+  
+  # 2. Producción de gráficos con condicional if else
+  for (i in seq_along(base)){
+    
+    if(is.numeric(base[,i])){ 
+      
+      # Gráfico vectores numéricos
+      lista[[i]] <- 
+        ggplot(data=base,
+               aes_string(x=colnames(base)[i],
+               fill=grupo, color=grupo))+
+        geom_density(alpha=0.25, show.legend = FALSE)+
+        ggstatsplot::theme_ggstatsplot()+        
+        labs(y="Función de densidad")+
+        colores+
+        rellenados
+    
+    } else if(is.factor(base[,i])){
+      
+      # Gráfico Factores 
+      
+      ### Conteo de niveles del factor
+      longitud_fct <- length(levels(base[,i]))
+      
+      ### Gráfico para <= de 8 niveles
+      if(longitud_fct <= 8) {
+        
+      lista[[i]] <- 
+        ggplot(data=base, 
+               aes_string(x=colnames(base)[i],
+                          fill=colnames(base)[i]))+
+        geom_bar(stat="count", alpha=0.25, show.legend = FALSE)+
+        ggstatsplot::theme_ggstatsplot()+
+        stat_count(geom="text", aes(label=..count..), 
+                   color="black", hjust=1.5, size=3)+
+        labs(y="Frecuencia absoluta")+
+        rellenados+
+        coord_flip(clip = "off")
+      
+      } else if(longitud_fct >= 8){
+        
+      ### Gráfico para >= de 8 niveles
+      lista[[i]] <- 
+        ggplot(data=base, 
+               aes_string(x=colnames(base)[i],
+                          fill=colnames(base)[i]))+
+        geom_bar(stat="count", alpha=0.25, 
+                 show.legend = FALSE, fill="deepskyblue3")+
+        ggstatsplot::theme_ggstatsplot()+
+        stat_count(geom="text", aes(label=..count..), 
+                   color="black", hjust=1.5, size=3)+
+        labs(y="Frecuencia absoluta")+
+        coord_flip(clip = "off")
+      }
+    }
+  }
+  
+  # Agrupar los gráficos para plotearlos juntos
+  grafico <- ggarrange(plotlist = lista)
+  
+  # Imprimir gráficos juntos
+  return(grafico)
+}
+```
+
+## Fase 4: Aplicando la función EDA
+
+```{r}
+# Base de datos iris
+data("iris")
+EDA(iris)
+
+set.seed(12345)
+iris <- iris %>% sample_frac(0.8)
+EDA(iris)
+
+# Base de datos iris agrupada por Species
+EDA(iris, grupo = "Species")
+
+# Base de datos iris agrupada por Month
+data("airquality")
+EDA(airquality)
+
+airquality$Month <- factor(airquality$Month)
+airquality$Month <- fct_recode(airquality$Month,
+                               "Septiembre" = "9",
+                               "Julio" = "7")
+
+EDA(airquality, grupo = "Month")
+
+# data Árboles
+data("trees")
+EDA(trees)
+
+# data Genes
+data("gene_citation")
+EDA(gene_citation)
+
+# data Terremotos
+data("quakes")
+EDA(quakes)
+quakes <- quakes %>% 
+  mutate(terremoto = case_when(
+    mag >= 5.5 ~ "Terremoto",
+    mag < 5.5 ~ "Sismo"
+  ))
+EDA(quakes,grupo = "terremoto")
+
+```
+
+```{r,eval=FALSE,echo=FALSE}
+# Starwars
+data("starwars")
+str(starwars)
+EDA(as.data.frame(starwars[,2:11]) %>% 
+      mutate_if(is.character, as.factor))
+
+```
+
