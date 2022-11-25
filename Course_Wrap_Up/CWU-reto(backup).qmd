@@ -1,0 +1,78 @@
+---
+title: "Course Wrap Up - Reto Final"
+subtitle: "Track: Estadística y programación con R<br>2022-3"
+author: "Irwing S. Saldaña"
+editor_options: 
+  chunk_output_type: console
+---
+
+# Course wrap up
+
+## Crear una función que aplique EDA sobre una base de datos
+
+## Fase 1: diseño del algoritmo:
+
+-   Función que evalue cada columna y vea de que tipo eso.
+-   A las funciones de tipo numérica les aplicará un gráfico de densidad
+-   a las funciones de tipo factor les aplicará un gráfico de barras
+
+## Fase 2: pseudocódigo
+
+```{r no ejecutar}
+EDA <- function(datos){
+ 
+
+}
+
+```
+
+## Fase 3: Código de la función EDA
+
+```{r ejecutar}
+EDA <- function(datos){
+ 
+
+}
+
+```
+
+## Fase 4: Aplicando la función EDA
+
+```{r}
+# Base de datos iris
+data("iris")
+
+
+# Base de datos iris agrupada por Species
+
+
+
+# Base de datos iris agrupada por Month
+data("airquality")
+
+
+
+airquality$Month <- factor(airquality$Month)
+airquality$Month <- fct_recode(airquality$Month,
+                               "Septiembre" = "9",
+                               "Julio" = "7")
+
+
+
+
+# data Árboles
+data("trees")
+
+
+# data Terremotos
+data("quakes")
+
+quakes <- quakes %>% 
+  mutate(terremoto = case_when(
+    mag >= 5.5 ~ "Terremoto",
+    mag < 5.5 ~ "Sismo"
+  ))
+
+
+
+```

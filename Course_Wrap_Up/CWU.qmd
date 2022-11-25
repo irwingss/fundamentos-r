@@ -1,42 +1,20 @@
 ---
-title: "Fundamentos de <br>programación con R"
+title: "Course Wrap Up - Reto Final"
 subtitle: "Track: Estadística y programación con R<br>2022-3"
 author: "Irwing S. Saldaña"
-format: 
-  revealjs:
-    incremental: false
-    smaller: true
-    scrollable: true
-    theme: mytheme.scss
-    transition: slide
-    background-transition: fade
-    logo: logo.png
-    chalkboard:
-      chalk-effect: 0.4
-      boardmarker-width: 3
-      chalk-width: 4.4
-      buttons: true
-    footer: "Fundamentos de R"
-execute:
-  cache: true
-editor: visual
-title-slide-attributes:
-    data-background-image: "figs/FondoPrincipal.jpg"
-    data-background-size: cover
-    data-background-opacity: "number"
 editor_options: 
   chunk_output_type: console
 ---
+
 # Course wrap up
 
 ## Crear una función que aplique EDA sobre una base de datos
 
 ## Fase 1: diseño del algoritmo:
 
-- Función que evalue cada columna y vea de que tipo eso.
-- A las funciones de tipo numérica les aplicará un gráfico de densidad
-- a las funciones de tipo factor les aplicará un gráfico de barras
-
+-   Función que evalue cada columna y vea de que tipo eso.
+-   A las funciones de tipo numérica les aplicará un gráfico de densidad
+-   a las funciones de tipo factor les aplicará un gráfico de barras
 
 ## Fase 2: pseudocódigo
 
@@ -197,4 +175,3 @@ EDA(as.data.frame(starwars[,2:11]) %>%
       mutate_if(is.character, as.factor))
 
 ```
-
