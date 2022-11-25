@@ -675,7 +675,7 @@ G1_G3L <- ggarrange(plotlist = listaG, ncol = 3, nrow = 1)
 G1_G3L
 ```
 
-## Course Wrap Up: reto final
+## Course Wrap Up: ¡reto final!
 
 ```{r, fig.align='center', out.width="100%"}
 knitr::include_graphics("figs/03_cwu.png", dpi=600)
