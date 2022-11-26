@@ -1,0 +1,409 @@
+---
+title: "Laboratorio 2"
+subtitle: "Curso: Fundamentos de programación con R"
+author: "Irwing S. Saldaña"
+format:
+  html:
+    dpi: 600
+    smooth-scroll: true
+    search: false
+    code-summary: "ooo"
+    code-fold: false
+    code-overflow: wrap
+    code-block-bg: true
+    code-block-border-left: "#5000ef"
+    linkcolor: "#5000ef"
+    highlight-style: ayu
+    code-link: true
+    code-copy: true
+    language: esp
+    toc-location: left
+    toc-depth: 3
+    toc-title: "Contenidos"
+    number-sections: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# **Carga de datos desde excel a RStudio**
+
+Esta sección te ayudará a reforzar el manejo de las estructuras y las clases de variables que existen en R para almacenar la información. Primero, aprenderás a cargar bases de datos externas a RStudio. Puedes hacerlo desde diversos tipos de archivos, pero comenzaremos con lo más básico: un archivo Excel.
+
+```{r}
+# Instala la librería y actívala
+# install.packages("openxlsx")
+library(openxlsx)
+
+# Carga el excel
+biopsias <- read.xlsx("bases/biopsy.xlsx")
+str(biopsias)
+
+# Definiendo el reemplazo de los espacios en blanco de los nombres de columnas
+biopsias <- read.xlsx("bases/biopsy.xlsx", sep.names = "_")
+str(biopsias)
+
+# Revisa la base con las funciones aprendidas
+str(biopsias)
+View(biopsias)
+dim(biopsias)
+ncol(biopsias)
+nrow(biopsias)
+names(biopsias)
+colnames(biopsias)
+rownames(biopsias)
+```
+
+Ahora a partir de un archivo delimitado por comas (CSV).
+
+```{r}
+# Abrir el archivo cane.csv
+cane <- read.csv("bases/cane.csv")
+cane <- read.csv("bases/cane.csv", row.names = 1) # Solo cuando sea necesario
+
+# Revisa la base con las funciones aprendidas
+str(cane)
+View(cane)
+```
+
+Finalmente, activemos una base de datos que ya está pre-instalada en R. Estas siempre se encuentran dentro de algún paquete específico
+
+```{r}
+# install.packages("datarium")
+library(datarium)
+data("weightloss")
+
+# Revisa la base con las funciones aprendidas
+str(weightloss)
+View(cane)
+```
+
+
+# **50 funciones comunes en R**
+
+```{r, eval=FALSE, echo=TRUE}
+%>%              # Pipe
+|>               # Pipe nativo
+mean()           # Promedio
+median()         # Mediana
+sd()             # Desviación estándar
+var()            # Varianza
+quantile()       # Cálculo de cuantiles
+range()          # Rango de valores
+seq_along()      # Secuencia numérica entre el máximo y mínimo
+sum()            # Sumatoria
+cumsum()         # Suma acumulada
+prod()           # Productorio
+cumprod()        # Producto acumulado
+max()            # Valor máximo
+min()            # Valor mínimo
+
+seq()            # Crear secuencia
+rep()            # Crear vector de repeticiones
+paste0()         # Concatenar strings (textos) sin dejar espacio
+paste()          # Concatenar strings (textos)
+sort()           # Reordenar de menor a mayor, o viceversa
+rev()            # Revertir el orden
+unique()         # Valores únicos en un vector
+scale()          # Transformación: Estandarización
+lm()             # Crear modelo lineal
+glm()            # Crear modelo generalizado lineal
+aov()            # Crear anova
+summary()        # Ver resumen estadístico de un objeto de modelamiento
+chisq.test()     # Crear prueba de chi cuadrado
+t.test()         # Crear prueba de t
+cor.test()       # Calcular la correlación entre dos vectores
+
+plot()           # Plot básico
+hist()           # Histograma de un vector
+boxplot()        # Boxplot o gráfico de cajas
+plot(density())  # Gráfico de densidad
+getwd()          # Obtener el directorio de trabajo actual
+setwd()          # Definir un directorio de trabajo
+str()            # Ver la estructura de un objeto
+View()           # Observar una tabla o lista como una pestaña
+names()          # Ver los nombres de un objeto (nombres de columna)
+length()         # Obtener la cantidad de elementos de un vector
+ncol()           # Obtener el número de columnas
+nrow()           # Obtener el número de filas
+head()           # Visualizar las primeras 6 filas de una tabla
+tail()           # Visualizar las últimas 6 filas de una tabla
+
+rm()             # Remover un objeto
+ls()             # Lista de objetos en el ambiente
+rm(ls())         # Eliminar todos los objetos del ambiente
+dev.off()        # Reiniciar la salida gráfica
+install.packages() # Instalar una librería
+remove.packages()  # Eliminar una librería
+library()        # Activar una librería
+require()        # Activar una librería
+table()          # Crear una matriz de contingencia
+data()           # Cargar bases de dato de ejemplo en R
+round()          # Redondear dígitos
+print()          # Imprimir un objeto
+```
+
+# **Estructuras de datos y clases**
+
+Es hora de poner en práctica lo aprendido sobre la estructura (vectores, factores, data.frame y listas), así como las clases (numeric, integer, character, logical) de variable. Utilizaremos algunas de las 50 funciones básicas en R que se les presentó anteriormente (ver en el chunk anterior). 
+
+**Por si se necesite, aquí les dejo unos emojis:** 
+
+😎😮😉   🚑✈️🔴   ⚽🍔🍻  🌾  🐬🦀🐤🐞   💩
+
+## **Indexación y uso de bases de data.frames**
+
+```{r}
+# Indexar columnas para un gráfico básico, re-básico, mega-simple, con la querida y odiada función plot().
+
+# Usa la base de datos cane para crear un gráfico de dispersión de puntos con las columnas n y r.
+
+str(cane)
+
+plot(cane$n, cane$r, 
+     main = "Incidencia de enfermedad X en\nplantaciones de caña de azúcar", # title
+     xlab = "N° brotes enfermos",
+     ylab = "N° brotes totales", 
+     cex = 2, # size
+     col = scales::alpha("deepskyblue2", 0.8), # color
+     pch = "💩") # shape, números del 1 al 25, cualquier "carácter", incluso "emojis"
+
+# Ahora veamos la correlación de Pearson entre estas columnas
+# Primero abre el Viewer de la base cane
+
+View(cane)
+
+# ¿Cuáles serían las 3 maneras de indexar las columnas n y r?
+cor.test(cane[,"n"], cane[,"r"])
+
+cor.test(cane[,1], cane[,2])
+
+cor.test(cane$n, cane$r)
+
+# Crea un gráfico de función de densidad sencillo de las columnas n y r
+
+plot(density(cane$r))
+
+plot(density(cane$n))
+
+# Crea un boxplot con la columna block
+
+boxplot(cane$r) # indexación
+
+boxplot(r ~ block, data = cane) # fórmula de enfrentamiento
+
+boxplot(r ~ block, data = cane, 
+        horizontal = TRUE,
+        col = "coral")
+
+mis_colores <- c("royalblue","darkorange", "firebrick", "forestgreen")
+
+boxplot(r ~ block, 
+        data = cane, 
+        horizontal = TRUE,
+        col =  scales::alpha(mis_colores,0.7), 
+        pch = "🐤")
+
+# Crea un histograma de frecuencias con las columnas n y r
+
+hist(cane$n) 
+
+hist(cane$r) 
+
+hist(cane$n, col = scales::alpha("darkgreen", 0.5), ann = FALSE) 
+
+```
+
+## **Indexación y uso de bases de factores**
+
+```{r}
+# Revisemos la columna block de la base cane
+
+str(cane)
+
+# Convertir dicha columna a factor
+
+cane$block <- factor(cane$block) # creación de factor
+cane$block <- as.factor(cane$block) # coerción a factor
+
+# Crear una nueva data.frame con las columnas n, r y block
+new_cane <- data.frame(cane$n, cane$r, cane$block)
+
+new_cane2 <- data.frame(brotes = cane$n, 
+                       enfermos = cane$r, 
+                       bloque = cane$block)
+
+# Revisa las primeras 6 filas
+
+head(new_cane)
+
+head(new_cane2)
+```
+
+
+## Trabajo con vectores y factores: uso e importancia
+
+```{r}
+# Resúmenes estadísticos rápidos
+summary(new_cane2)
+
+summary(new_cane2$enfermos)
+
+
+# Gráficos de pares 
+# (tu primera impresión de ggplot2)
+# install.packages("GGally")
+
+library(GGally)
+
+ggpairs(new_cane2)
+
+ggpairs(data = new_cane2, 
+        mapping = aes(color = bloque)) +  # importancia de bloque como factor
+  theme_test()
+
+# Cálculos estadísticos
+# ¿Y el coeficiente de variación?
+
+mean(new_cane2$brotes)
+
+sd(new_cane2$brotes)
+
+var(new_cane2$brotes)
+
+min(new_cane2$brotes)
+
+max(new_cane2$brotes)
+
+
+# Aplicando el cálculo estadístico por grupo
+
+tapply(new_cane2$brotes, new_cane2$bloque, mean) # cualquie función estadística
+
+tapply(new_cane2$brotes, new_cane2$bloque, var)
+
+# ¿Y si nos ahorramos la indexación?: uso de with()
+
+promedio <- with(new_cane2, 
+     tapply(brotes, bloque, mean))
+
+desvest <- with(new_cane2, 
+     tapply(brotes, bloque, sd))
+
+varianza <- with(new_cane2, 
+     tapply(brotes, bloque, var))
+
+minimo <- with(new_cane2, 
+     tapply(brotes, bloque, min))
+
+maximo <- with(new_cane2, 
+     tapply(brotes, bloque, max))
+
+categorias <- levels(new_cane2$bloque)
+
+# Unir todos los vectores creados en una sola data.frame como resumen estadístico
+
+data.frame(categorias, promedio, desvest, varianza, minimo, maximo)
+
+res_est <- data.frame(categorias, promedio, desvest, varianza, minimo, maximo)
+
+# Exportar el resumen estadístico (data.frame)
+
+library(openxlsx)
+
+write.xlsx(res_est, "res_est.xlsx")
+
+```
+
+## **Listas y más listas**
+
+```{r}
+# Convertir una data.frame a lista
+
+res_est
+
+as.list(res_est)
+
+res_est_Lista <- as.list(res_est)
+
+# Indexando una lista nombrada
+res_est_Lista$categorias
+
+# Creando una lista sin nombres desde cero
+
+lista_total <- list(res_est, # data.frame
+                    promedio, # vector
+                    res_est_Lista) # lista
+
+lista_total
+
+# Creando una lista nombrada desde cero
+
+library(dplyr)
+
+lista_total2 <- lst(res_est, # data.frame
+                    promedio, # vector
+                    res_est_Lista) # lista
+
+lista_total2
+
+# Indexa estos retos:
+# Ubica el valor de la varianza de la categoría C ubicada
+# en el elemento "res_est", tanto en la lista nombrada y no nombrada
+
+lista_total[[1]][3,4]
+
+lista_total2$res_est[3,4]
+
+lista_total2$res_est$varianza[3]
+
+# Des-enlistar una lista, un proceso importante
+# Ejecuta este ejemplo de automatización de 
+# creación y comparación de modelos
+
+data("iris") # data
+
+lista_modelos <- lst() # lista vacía
+
+for (i in 1:4) {
+  lista_modelos[[i]] <- lm(iris[,i] ~ Species, data = iris)
+} # loop for
+
+lista_modelos # visualizar lista de modelos. Importante!!
+
+lista_AIC <- lapply(lista_modelos, AIC) # aplicar el cálculo de AIC
+
+names(lista_AIC) <- names(iris)[-5] # darle nombre a cada AIC
+
+lista_AIC # revisar la lista de AIC de los modelos resultante de lapply() 
+
+# des-enlistar
+
+unlist(lista_AIC)
+
+```
+
+# **¿Más práctica?**
+
+Ya comprendes:
+
+- Cómo se crean las diferentes *estructuras de datos* más importantes (vectores, factores, listas y data.frame).
+
+- Cómo reconocer las diferentes *clases de datos* (numeric, integer, character, logical) y sus aplicaciones. 
+
+- Cómo funciona la *indexación* con `$`, `[]`, `[[]]`.
+
+- Cómo *importar y exporta bases* de datos desde/hacia tu equipo.
+
+- El uso de algunas *funciones básicas* de R.
+
+- La *visualización básica* de datos en R, y la existencia de *ggplot2*. 
+
+- ¡La existencia de el *loop for*!
+
+
+Emplea las demás bases de datos para comenzar a aplicar indexación con la finalidad de crear gráficos y aplicar funciones estadísticas que aquí hemos revisado.
+
+Y como siempre, puedes seguír capacitándote con la versión beta de mi libro ["Introducción a R para Ciencias." ](https://irwingss.github.io/intro_r_ciencias/)
+
+
