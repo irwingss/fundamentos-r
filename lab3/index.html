@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.1.189">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Irwing S. Saldaña">
-<title>Laboratorio 1</title>
+<title>Laboratorio 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,21 +103,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
 <li>
-<a href="#algoritmos-y-pseudoc%C3%B3digo" id="toc-algoritmos-y-pseudocódigo" class="nav-link active" data-scroll-target="#algoritmos-y-pseudoc%C3%B3digo"><span class="toc-section-number">1</span>  Algoritmos y Pseudocódigo</a>
+<a href="#aplicar-con-c%C3%B3digo-los-pseudoc%C3%B3digos-del-laboratorio-1" id="toc-aplicar-con-código-los-pseudocódigos-del-laboratorio-1" class="nav-link active" data-scroll-target="#aplicar-con-c%C3%B3digo-los-pseudoc%C3%B3digos-del-laboratorio-1"><strong>1. Aplicar con código los pseudocódigos del laboratorio 1</strong></a>
   <ul class="collapse">
-<li><a href="#identificar-un-n%C3%BAmero-par" id="toc-identificar-un-número-par" class="nav-link" data-scroll-target="#identificar-un-n%C3%BAmero-par"><span class="toc-section-number">1.1</span>  Identificar un número par</a></li>
-  <li><a href="#contabilizar-las-guaninas-en-una-secuencia-de-adn" id="toc-contabilizar-las-guaninas-en-una-secuencia-de-adn" class="nav-link" data-scroll-target="#contabilizar-las-guaninas-en-una-secuencia-de-adn"><span class="toc-section-number">1.2</span>  Contabilizar las Guaninas en una secuencia de ADN</a></li>
-  <li><a href="#funci%C3%B3n-para-hacer-eda-exploratory-data-analysis" id="toc-función-para-hacer-eda-exploratory-data-analysis" class="nav-link" data-scroll-target="#funci%C3%B3n-para-hacer-eda-exploratory-data-analysis"><span class="toc-section-number">1.3</span>  Función para hacer EDA (Exploratory Data Analysis)</a></li>
-  <li><a href="#identificar-un-n%C3%BAmero-par-1" id="toc-identificar-un-número-par-1" class="nav-link" data-scroll-target="#identificar-un-n%C3%BAmero-par-1"><span class="toc-section-number">1.4</span>  Identificar un número par</a></li>
+<li><a href="#identificar-un-n%C3%BAmero-par" id="toc-identificar-un-número-par" class="nav-link" data-scroll-target="#identificar-un-n%C3%BAmero-par"><strong>1.1. Identificar un número par</strong></a></li>
+  <li><a href="#contabilizar-las-guaninas-en-una-secuencia-de-adn" id="toc-contabilizar-las-guaninas-en-una-secuencia-de-adn" class="nav-link" data-scroll-target="#contabilizar-las-guaninas-en-una-secuencia-de-adn"><strong>1.2. Contabilizar las Guaninas en una secuencia de ADN</strong></a></li>
+  <li><a href="#c%C3%A1lculo-de-la-tasa-metab%C3%B3lica-basal-de-una-persona" id="toc-cálculo-de-la-tasa-metabólica-basal-de-una-persona" class="nav-link" data-scroll-target="#c%C3%A1lculo-de-la-tasa-metab%C3%B3lica-basal-de-una-persona"><strong>1.3. Cálculo de la Tasa Metabólica Basal de una persona</strong></a></li>
   </ul>
 </li>
-  <li><a href="#nota-adicional" id="toc-nota-adicional" class="nav-link" data-scroll-target="#nota-adicional"><span class="toc-section-number">2</span>  Nota adicional</a></li>
   </ul></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
 </div>
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Laboratorio 1</h1>
+<h1 class="title">Laboratorio 3</h1>
 <p class="subtitle lead">Curso: Fundamentos de programación con R</p>
 </div>
 
@@ -136,33 +134,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header><section id="algoritmos-y-pseudocódigo" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Algoritmos y Pseudocódigo</h1>
-<p>Pon en práctica la creación de algoritmos empleando pseudocódigo con los siguientes ejercicios. Intenta resolverlos sin revisar el resultado. Una vez que hiciste tu mejor esfuerzo por resolver cada ejercicio, revisa el resultado correcto haciendo clic en <strong>“Mostrar el código”</strong> debajo de cada ejercicio.</p>
-<section id="identificar-un-número-par" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="identificar-un-número-par">
-<span class="header-section-number">1.1</span> Identificar un número par</h2>
-<div class="columns">
-<div class="column">
-<p>En la sección <em>R como calculadora</em> se mostró que al utilizar <code>Numero1 %% Numero2</code>, el resultado impreso en consola es el residuo de la división de <code>Numero1</code> entre <code>Numero2</code>.</p>
-<p>Toma como pista lo siguiente: siempre que dividas un número par, el residuo de la división es 0.</p>
-<p>Aplica lo visto en la sección de <em>Pseudocódigo</em> para crear uno que te permita responder la pregunta ¿el número N es par?:</p>
-</div><div class="column">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figs/01_Lab_Alg1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
+</header><section id="aplicar-con-código-los-pseudocódigos-del-laboratorio-1" class="level1"><h1><strong>1. Aplicar con código los pseudocódigos del laboratorio 1</strong></h1>
+<section id="identificar-un-número-par" class="level2"><h2 class="anchored" data-anchor-id="identificar-un-número-par"><strong>1.1. Identificar un número par</strong></h2>
+<p>En el laboratorio 1 realizaste el pseudocódigo para identificar si un número es par o impar. Utilízalo para crear la función <code>espar()</code> que automatice dicha identificación.</p>
 <div class="cell">
-<details><summary>ooo</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Código en modo 1 (básico): ------------------- -</span></span>
-<span><span class="co"># Iniciar</span></span>
-<span><span class="co"># Recibir: N</span></span>
-<span><span class="co"># Evaluar: si el residuo de  N/2 es igual a 0, entonces imprimir "es par", si es diferente de 0, imprimir es impar</span></span>
-<span><span class="co"># Fin</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># PSEUDOCÓDIGO</span></span>
 <span></span>
 <span><span class="co"># Código en modo 2 (avanzado): ------------------- -</span></span>
 <span><span class="co"># Iniciar</span></span>
@@ -171,34 +147,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span><span class="co"># | print("es par")</span></span>
 <span><span class="co"># | else </span></span>
 <span><span class="co"># | | print("es impar")</span></span>
-<span><span class="co"># Fin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<span><span class="co"># Fin</span></span>
+<span></span>
+<span><span class="co"># Función espar()</span></span>
+<span><span class="va">espar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">N</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">N</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"es par"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span><span class="op">(</span><span class="va">N</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"no es par"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Evaluar la función espar()</span></span>
+<span><span class="fu">espar</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "no es par"</code></pre>
 </div>
-</section><section id="contabilizar-las-guaninas-en-una-secuencia-de-adn" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="contabilizar-las-guaninas-en-una-secuencia-de-adn">
-<span class="header-section-number">1.2</span> Contabilizar las Guaninas en una secuencia de ADN</h2>
-<div class="columns">
-<div class="column">
-<p>El ADN contiene 4 tipo de bases nitrogenadas: guaninas (G), timinas (T), adeninas (A), citocinas (C). Una secuencia de ADN, en consecuencia, estará compuesta por cadenas de estas cuatro moléculas (letras).</p>
-<p>Crea un <strong>algoritmo que contabilice las guaninas (G)</strong> de una cadena de ADN.</p>
-</div><div class="column">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figs/01_Lab_Alg2.png" class="img-fluid figure-img" style="width:80.0%"></p>
-</figure>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">espar</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "es par"</code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section><section id="contabilizar-las-guaninas-en-una-secuencia-de-adn" class="level2"><h2 class="anchored" data-anchor-id="contabilizar-las-guaninas-en-una-secuencia-de-adn"><strong>1.2. Contabilizar las Guaninas en una secuencia de ADN</strong></h2>
+<p>En el laboratorio 1 realizaste el pseudocódigo del procedimiento de contabilizar las guaninas de una secuencia de ADN.</p>
+<p>Primero, creemos una secuencia de ADN cualquiera en R llamada <code>Cadena_ADN</code>:</p>
 <div class="cell">
-<details><summary>ooo</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Código en modo 1 (básico): ------------------- -</span></span>
-<span><span class="co"># Iniciar</span></span>
-<span><span class="co"># Recibir: Cadena_ADN</span></span>
-<span><span class="co"># Crear: un objeto "CONTEO" vacío que reciba el conteo de G.</span></span>
-<span><span class="co"># Evaluar: elemento por elemento si es o no es G. Sumar el valor 1 al objeto "CONTEO" cada vez que encuentra una G en la secuencia. Hacer esto hasta el último elemento de la secuencia.</span></span>
-<span><span class="co"># Mostrar: el valor de "CONTEO"</span></span>
-<span><span class="co"># Finalizar</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Crea los posibles valores</span></span>
+<span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"G"</span>,<span class="st">"C"</span>,<span class="st">"T"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Aplica un muestreo con repeticiones para crear la cadena de ADN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">Cadena_ADN</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">vals</span>, <span class="fl">600</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>, prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>,<span class="fl">0.3</span>,<span class="fl">0.2</span>,<span class="fl">0.2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ahora, crea la función <code>guaninas()</code> que consiga recrear tu pseudocódigo, tomando como argumento de entrada el objeto <code>Cadena_ADN</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># PSEUDOCÓDIGO</span></span>
 <span></span>
 <span><span class="co"># Código en modo 2 (avanzado): ------------------- -</span></span>
 <span><span class="co"># Iniciar</span></span>
@@ -209,94 +192,214 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span><span class="co">#  |   else </span></span>
 <span><span class="co">#  |   | CONTEO = CONTEO</span></span>
 <span><span class="co"># Imprimir valor: "CONTEO"</span></span>
-<span><span class="co"># Finalizar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="función-para-hacer-eda-exploratory-data-analysis" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="función-para-hacer-eda-exploratory-data-analysis">
-<span class="header-section-number">1.3</span> Función para hacer EDA (Exploratory Data Analysis)</h2>
-<div class="columns">
-<div class="column">
-<p>Un análisis de exploración de datos (EDA, siglas en inglés) es un procedimiento para inspeccionar la naturaleza y estadísticos descriptivos de cada columna en una base de datos (tabla). Estos análisis pueden ser univariados (describiendo estadísticamente columna por columna), o bivariados (describiendo la relación entre pares de columnas).</p>
-<p>Nos enfocaremos en EDA univariado. Una forma sencilla de realizarlo es aplicar gráficas estadísticas descriptivas dependiendo del tipo de variable que aloja una columna dada. Para una <strong>columna cuyos datos sea numéricos</strong>, se preferirá realizar un <em>gráfico de función de densidad</em> para visualizar la distribución de los mismos. Para una <strong>columna con datos categóricos</strong>, se realizará un <strong>gráfico de barras</strong>.</p>
-<p>Crea el pseudocódigo de un algoritmo que ayude a realizar una gráfica por columna, dependiendo de su tipo.</p>
-</div><div class="column">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figs/01_Lab_Alg3.png" class="img-fluid figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<details><summary>ooo</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Código en modo 1 (básico): ------------------- -</span></span>
-<span><span class="co"># Iniciar</span></span>
-<span><span class="co"># Recibir: Base de datos</span></span>
-<span><span class="co"># Crear: un objeto vacío "LISTA" que almacene los gráficos resultantes</span></span>
-<span><span class="co"># Evaluar: columna por columna la siguiente condición:</span></span>
-<span><span class="co"># Si una columna es numérica, hacer gráfico de función de densidad; </span></span>
-<span><span class="co"># Si una columna es categórica, hacer gráfico de barras.</span></span>
-<span><span class="co"># Colocar el gráfico resultante dentro del objeto "LISTA".</span></span>
-<span><span class="co"># Mostrar: todos los gráficos del objeto LISTA.</span></span>
 <span><span class="co"># Finalizar</span></span>
 <span></span>
-<span><span class="co"># Código en modo 2 (avanzado): ------------------- -</span></span>
-<span><span class="co"># Iniciar</span></span>
-<span><span class="co"># Recibir: Base de datos</span></span>
-<span><span class="co"># Probar el siguiente if columnas por columna</span></span>
-<span><span class="co">#  |  if (columna es numérica) </span></span>
-<span><span class="co">#  |   |  Graficar: función de densidad</span></span>
-<span><span class="co">#  |   |  Almacenar: el gráfico en LISTA</span></span>
-<span><span class="co">#  |   else if (columna es categórica) </span></span>
-<span><span class="co">#  |         |  Graficar: función de densidad</span></span>
-<span><span class="co">#  |         |  Almacenar: el gráfico en LISTA</span></span>
-<span><span class="co"># Imprimir: todos los gráficos del objeto LISTA.</span></span>
-<span><span class="co"># Finalizar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="identificar-un-número-par-1" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="identificar-un-número-par-1">
-<span class="header-section-number">1.4</span> Identificar un número par</h2>
-<div class="columns">
-<div class="column">
-<p>En la sección <em>R como calculadora (módulo ¡Comencemos!)</em>, se mostró que al utilizar el símbolo <code>%%</code> en una división, el resultado impreso en consola era el residuo de la misma.</p>
-<p>Aplica lo visto en la sección de <em>Pseudocódigo</em> para crear uno que te permita responder la pregunta ¿el número N es par?:</p>
-</div><div class="column">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figs/01_Lab_Alg1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<details><summary>ooo</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Código en modo 1 (básico): ------------------- -</span></span>
-<span><span class="co"># Iniciar</span></span>
-<span><span class="co"># Recibir: N</span></span>
-<span><span class="co"># Evaluar: si el residuo de  N/2 es igual a 0, entonces imprimir "es par", si es diferente de 0, imprimir es impar</span></span>
-<span><span class="co"># Fin</span></span>
+<span><span class="co"># Función guaninas()</span></span>
+<span><span class="va">guaninas</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">Cadena_ADN</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">CONTEO</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span>  </span>
+<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">Cadena_ADN</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">Cadena_ADN</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">CONTEO</span> <span class="op">&lt;-</span> <span class="va">CONTEO</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> </span>
+<span>    <span class="va">CONTEO</span> <span class="op">&lt;-</span> <span class="va">CONTEO</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">CONTEO</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># Código en modo 2 (avanzado): ------------------- -</span></span>
-<span><span class="co"># Iniciar</span></span>
-<span><span class="co"># Recibir: N</span></span>
-<span><span class="co"># if N %% 2 == 0</span></span>
-<span><span class="co"># | print("es par")</span></span>
-<span><span class="co"># | else </span></span>
-<span><span class="co"># | | print("es impar")</span></span>
-<span><span class="co"># Fin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<span><span class="co"># Evaluar la función guaninas()</span></span>
+<span><span class="fu">guaninas</span><span class="op">(</span><span class="va">Cadena_ADN</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 190</code></pre>
 </div>
-</section></section><section id="nota-adicional" class="level1" data-number="2"><h1 data-number="2">
-<span class="header-section-number">2</span> Nota adicional</h1>
-<p>Como habrás notado en las respuestas ofrecidas en este laboratorio, se suele trabajar creando <strong>objetos vacíos</strong> que almacenen los resultados (por ejemplo: cuarta línea en la respuesta de los pseudocódigos 1.2 y 1.3). Recuerda que estás lidiando con información, y esta debe estar guardada de alguna manera y bajo alguna estructura de datos en nuestra computadora. En el siguiente módulo aprenderás sobre <strong>estructuras de datos</strong> para completar la ecuación:</p>
+</div>
+<p>En R existen varias funciones que pueden servirnos a resolver problemas para las cuales no fueron originalmente creadas. Veamos el caso de la librería stringr que contiene funciones interesantes para el manejo de vectores del tipo <code>character</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Función existente de stringr que logra este resultado</span></span>
+<span><span class="va">Cadena_ADN_logica</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">Cadena_ADN</span>, pattern <span class="op">=</span> <span class="st">"G"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Cadena_ADN_logica</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 190</code></pre>
+</div>
+</div>
+<p>Creemos una variante de la función <code>guaninas()</code> que le permita al usuario especificar la base nitrogenada que desea cuantificar en la secuencia de ADN. Esta nueva función la llamaremos <code>conteoBN()</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Función conteoBN() donde el usuario define qué base nitrogenada contar</span></span>
+<span><span class="va">conteoBN</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">Cadena_ADN</span>, <span class="va">BN</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">CONTEO</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span>  </span>
+<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">Cadena_ADN</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">Cadena_ADN</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">==</span> <span class="va">BN</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">CONTEO</span> <span class="op">&lt;-</span> <span class="va">CONTEO</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> </span>
+<span>    <span class="va">CONTEO</span> <span class="op">&lt;-</span> <span class="va">CONTEO</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">CONTEO</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Evaluar la función conteoBN()</span></span>
+<span><span class="fu">conteoBN</span><span class="op">(</span><span class="va">Cadena_ADN</span>, <span class="st">"G"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 190</code></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">conteoBN</span><span class="op">(</span><span class="va">Cadena_ADN</span>, <span class="st">"A"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 176</code></pre>
+</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">conteoBN</span><span class="op">(</span><span class="va">Cadena_ADN</span>, <span class="st">"C"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 113</code></pre>
+</div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">conteoBN</span><span class="op">(</span><span class="va">Cadena_ADN</span>, <span class="st">"T"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 121</code></pre>
+</div>
+</div>
+</section><section id="cálculo-de-la-tasa-metabólica-basal-de-una-persona" class="level2"><h2 class="anchored" data-anchor-id="cálculo-de-la-tasa-metabólica-basal-de-una-persona"><strong>1.3. Cálculo de la Tasa Metabólica Basal de una persona</strong></h2>
+<p>La tasa metabólica basal (TMB) es la cantidad mínima de energía que necesita tu cuerpo para sobrevivir realizando las funciones básicas, tales como respirar, parpadear, filtrar la sangre, regular la temperatura del cuerpo o sintetizar hormonas.</p>
+<p>Para su cálculo se emplea la tasa metabólica (TM):</p>
+<ul>
+<li><em>Para hombres:</em></li>
+</ul>
 <p><span class="math display">\[
-\text{Algoritmos} + \text{Estructuras de datos} = \text{Programas}
+\text{TM} = 10*\text{peso} + 6.26*\text{altura}-5*\text{edad}+5
+\]</span> - <em>Para hombres:</em></p>
+<p><span class="math display">\[
+\text{TM} = 10*\text{peso} + 6.26*\text{altura}-5*\text{edad}-161
 \]</span></p>
-</section></main><!-- /main column --><script id="quarto-html-after-body" type="application/javascript">
+<p>Y luego se multiplica dicho valor por una constante definida según el nivel de actividades que realiza una persona durante la semana:</p>
+<ul>
+<li><p><span class="math inline">\(\text{TMB} = \text{TM} * 1.2\)</span> para personas totalmente sedentarias (0 días de ejercicio semanal).</p></li>
+<li><p><span class="math inline">\(\text{TMB} = \text{TM} * 1.375\)</span> para personas ligeramente activas (1-3 días de ejercicio/semana).</p></li>
+<li><p><span class="math inline">\(\text{TMB} = \text{TM} * 1.55\)</span> para personas moderadamente activas (4-5 días de ejercicio/semana).</p></li>
+<li><p><span class="math inline">\(\text{TMB} = \text{TM} * 1.725\)</span> para personas muy activas (6-7 días de ejercicio/semana).</p></li>
+<li><p><span class="math inline">\(\text{TMB} = \text{TM} * 1.912\)</span> para personas extremadamente activas (6-7 días de ejercicio/semana pero bajo régimen de entrenamiento doble).</p></li>
+</ul>
+<p>Por ejemplo, para un hombre que pesa 82 kg, mide 190 cm, y tiene 29 años de edad; su TMB (condicionada al nivel de actividad semanal), sería:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Crea las variables</span></span>
+<span><span class="va">peso</span> <span class="op">&lt;-</span> <span class="fl">82</span></span>
+<span><span class="va">altura</span> <span class="op">&lt;-</span> <span class="fl">190</span></span>
+<span><span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">29</span></span>
+<span></span>
+<span><span class="co"># Calcula el TM</span></span>
+<span><span class="va">TM</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="op">*</span> <span class="va">peso</span> <span class="op">+</span> <span class="fl">6.26</span> <span class="op">*</span> <span class="va">altura</span> <span class="op">-</span> <span class="fl">5</span> <span class="op">*</span> <span class="va">edad</span> <span class="op">+</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="co"># Calcula el TMB condicionada al nivel de actividad semanal</span></span>
+<span><span class="va">TM</span> <span class="op">*</span> <span class="fl">1.2</span> <span class="co"># totalmente sedentario</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2243.28</code></pre>
+</div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TM</span> <span class="op">*</span> <span class="fl">1.375</span> <span class="co"># ligeramente activo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2570.425</code></pre>
+</div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TM</span> <span class="op">*</span> <span class="fl">1.55</span> <span class="co"># moderadamente activo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2897.57</code></pre>
+</div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TM</span> <span class="op">*</span> <span class="fl">1.725</span> <span class="co"># muy activo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3224.715</code></pre>
+</div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TM</span> <span class="op">*</span> <span class="fl">1.912</span> <span class="co"># extremadamente activo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3574.293</code></pre>
+</div>
+</div>
+<p>Con el pseudocódigo finalizado, crea la función <code>TMB()</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TMB</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">peso</span>, <span class="va">altura</span>, <span class="va">edad</span>, <span class="va">sexo</span>, <span class="va">dias_entrenamiento</span>, <span class="va">doble_ejercicio</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">TM</span> <span class="op">=</span> <span class="fl">10</span><span class="op">*</span><span class="va">peso</span> <span class="op">+</span> <span class="fl">6.26</span><span class="op">*</span><span class="va">altura</span> <span class="op">-</span> <span class="fl">5</span><span class="op">*</span><span class="va">edad</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">sexo</span> <span class="op">==</span> <span class="st">"hombre"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">TM</span> <span class="op">=</span> <span class="va">TM</span> <span class="op">+</span> <span class="fl">5</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">sexo</span> <span class="op">==</span> <span class="st">"mujer"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">TM</span> <span class="op">=</span> <span class="va">TM</span> <span class="op">-</span> <span class="fl">161</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/conditions.html">errorCondition</a></span><span class="op">(</span><span class="st">"Sexo solo puede ser \"hombre\" o \"mujer\""</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">doble_ejercicio</span> <span class="op">==</span> <span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="va">dias_entrenamiento</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">TM</span><span class="op">*</span><span class="fl">1.912</span><span class="op">)</span></span>
+<span>    </span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">doble_ejercicio</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">DE</span> <span class="op">&lt;-</span> <span class="va">dias_entrenamiento</span></span>
+<span>    </span>
+<span>    <span class="va">multi</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>      <span class="va">DE</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="fl">1.2</span>,</span>
+<span>      <span class="va">DE</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">~</span> <span class="fl">1.375</span>,</span>
+<span>      <span class="va">DE</span>  <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span> <span class="op">~</span> <span class="fl">1.55</span>,</span>
+<span>      <span class="va">DE</span>  <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span> <span class="op">~</span> <span class="fl">1.725</span></span>
+<span>      <span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">TM</span><span class="op">*</span><span class="va">multi</span><span class="op">)</span> </span>
+<span>  </span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/conditions.html">errorCondition</a></span><span class="op">(</span><span class="st">"Comprueba las variables de entrada"</span>, call. <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">TMB</span><span class="op">(</span>peso <span class="op">=</span> <span class="fl">83</span>, altura <span class="op">=</span> <span class="fl">190</span>, edad <span class="op">=</span> <span class="fl">29</span>, sexo <span class="op">=</span> <span class="st">"hombre"</span>, </span>
+<span>    dias_entrenamiento <span class="op">=</span> <span class="fl">4</span>, doble_ejercicio <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2913.07</code></pre>
+</div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># número de calorías que necesitas diarias para mantener tu peso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Mejora la impresión del resultado en consola utilizando <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> y textos adicionales al valor de TMB. Define esta función como <code>TMB2()</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TMB2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">peso</span>, <span class="va">altura</span>, <span class="va">edad</span>, <span class="va">sexo</span>, <span class="va">dias_entrenamiento</span>, <span class="va">doble_ejercicio</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">TM</span> <span class="op">=</span> <span class="fl">10</span><span class="op">*</span><span class="va">peso</span> <span class="op">+</span> <span class="fl">6.26</span><span class="op">*</span><span class="va">altura</span><span class="op">-</span><span class="fl">5</span><span class="op">*</span><span class="va">edad</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">sexo</span> <span class="op">==</span> <span class="st">"hombre"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">TM</span> <span class="op">=</span> <span class="va">TM</span> <span class="op">+</span> <span class="fl">5</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">sexo</span> <span class="op">==</span> <span class="st">"mujer"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">TM</span> <span class="op">=</span> <span class="va">TM</span> <span class="op">-</span> <span class="fl">161</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/conditions.html">errorCondition</a></span><span class="op">(</span><span class="st">"Sexo solo puede ser \"hombre\" o \"mujer\""</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="va">mensaje</span> <span class="op">&lt;-</span> <span class="st">"Tu tasa metabólica basal es: "</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">doble_ejercicio</span> <span class="op">==</span> <span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="va">dias_entrenamiento</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">mensaje</span>, <span class="va">TM</span><span class="op">*</span><span class="fl">1.912</span>, <span class="st">"kcal/día"</span>, <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span>
+<span>    </span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">doble_ejercicio</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">DE</span> <span class="op">&lt;-</span> <span class="va">dias_entrenamiento</span></span>
+<span>    </span>
+<span>    <span class="va">multi</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>      <span class="va">DE</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="fl">1.2</span>,</span>
+<span>      <span class="va">DE</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">~</span> <span class="fl">1.375</span>,</span>
+<span>      <span class="va">DE</span>  <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">4</span><span class="op">:</span><span class="fl">5</span> <span class="op">~</span> <span class="fl">1.55</span>,</span>
+<span>      <span class="va">DE</span>  <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">:</span><span class="fl">7</span> <span class="op">~</span> <span class="fl">1.725</span></span>
+<span>      <span class="op">)</span></span>
+<span>    </span>
+<span>   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">mensaje</span>, <span class="va">TM</span><span class="op">*</span><span class="va">multi</span>,<span class="st">"kcal/día"</span>, <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"Comprueba las variables de entrada"</span>, call. <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># número de calorías que necesitas diarias para mantener tu peso</span></span>
+<span><span class="fu">TMB2</span><span class="op">(</span>peso <span class="op">=</span> <span class="fl">63</span>, altura <span class="op">=</span> <span class="fl">155</span>, edad <span class="op">=</span> <span class="fl">23</span>, sexo <span class="op">=</span> <span class="st">"hombre"</span>,</span>
+<span>    dias_entrenamiento <span class="op">=</span> <span class="fl">5</span>, doble_ejercicio <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tu tasa metabólica basal es:  2309.965 kcal/día </code></pre>
+</div>
+</div>
+<p>Las fórmulas se consideraron tal cual se muestran <a href="https://www.gob.pe/14903-calcular-tasa-de-metabolismo-basal-tmb-en-adultos">en este link</a></p>
+</section></section></main><!-- /main column --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

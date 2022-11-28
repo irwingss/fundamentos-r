@@ -78,7 +78,6 @@ str(weightloss)
 View(cane)
 ```
 
-
 # **50 funciones comunes en R**
 
 ```{r, eval=FALSE, echo=TRUE}
@@ -145,11 +144,11 @@ print()          # Imprimir un objeto
 
 # **Estructuras de datos y clases**
 
-Es hora de poner en práctica lo aprendido sobre la estructura (vectores, factores, data.frame y listas), así como las clases (numeric, integer, character, logical) de variable. Utilizaremos algunas de las 50 funciones básicas en R que se les presentó anteriormente (ver en el chunk anterior). 
+Es hora de poner en práctica lo aprendido sobre la estructura (vectores, factores, data.frame y listas), así como las clases (numeric, integer, character, logical) de variable. Utilizaremos algunas de las 50 funciones básicas en R que se les presentó anteriormente (ver en el chunk anterior).
 
-**Por si se necesite, aquí les dejo unos emojis:** 
+**Por si se necesite, aquí les dejo unos emojis:**
 
-😎😮😉   🚑✈️🔴   ⚽🍔🍻  🌾  🐬🦀🐤🐞   💩
+😎😮😉 🚑✈️🔴 ⚽🍔🍻 🌾 🐬🦀🐤🐞 💩
 
 ## **Indexación y uso de bases de data.frames**
 
@@ -239,7 +238,6 @@ head(new_cane)
 
 head(new_cane2)
 ```
-
 
 ## Trabajo con vectores y factores: uso e importancia
 
@@ -387,23 +385,20 @@ unlist(lista_AIC)
 
 Ya comprendes:
 
-- Cómo se crean las diferentes *estructuras de datos* más importantes (vectores, factores, listas y data.frame).
+-   Cómo se crean las diferentes *estructuras de datos* más importantes (vectores, factores, listas y data.frame).
 
-- Cómo reconocer las diferentes *clases de datos* (numeric, integer, character, logical) y sus aplicaciones. 
+-   Cómo reconocer las diferentes *clases de datos* (numeric, integer, character, logical) y sus aplicaciones.
 
-- Cómo funciona la *indexación* con `$`, `[]`, `[[]]`.
+-   Cómo funciona la *indexación* con `$`, `[]`, `[[]]`.
 
-- Cómo *importar y exporta bases* de datos desde/hacia tu equipo.
+-   Cómo *importar y exporta bases* de datos desde/hacia tu equipo.
 
-- El uso de algunas *funciones básicas* de R.
+-   El uso de algunas *funciones básicas* de R.
 
-- La *visualización básica* de datos en R, y la existencia de *ggplot2*. 
+-   La *visualización básica* de datos en R, y la existencia de *ggplot2*.
 
-- ¡La existencia de el *loop for*!
-
+-   ¡La existencia de el *loop for*!
 
 Emplea las demás bases de datos para comenzar a aplicar indexación con la finalidad de crear gráficos y aplicar funciones estadísticas que aquí hemos revisado.
 
-Y como siempre, puedes seguír capacitándote con la versión beta de mi libro ["Introducción a R para Ciencias." ](https://irwingss.github.io/intro_r_ciencias/)
-
-
+Y como siempre, puedes seguír capacitándote con la versión beta de mi libro ["Introducción a R para Ciencias."](https://irwingss.github.io/intro_r_ciencias/)
